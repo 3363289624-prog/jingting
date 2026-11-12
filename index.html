@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html data-page-node-id="6xYLWAnJu7G7eX1ZSD3YJ8" lang="zh-CN">
+<head data-page-node-id="SBJEiLkNM3EPGOuysA00uU">
+<meta data-page-node-id="pLgzs8XPrZvh2jXZ47VHv1" charset="utf-8">
+<meta data-page-node-id="UQSYkLv2sYUkYS05rv2oM9" content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport">
+<meta data-page-node-id="Koaxe6clW03adlYY9bthMR" content="#F2F2F7" name="theme-color">
+<meta data-page-node-id="XdiBfIEM5eqNSozCAy0rTw" content="yes" name="apple-mobile-web-app-capable">
+<meta data-page-node-id="q8LJGDedVt5wUpQ5SIyX8a" content="default" name="apple-mobile-web-app-status-bar-style">
+<title data-page-node-id="HRepBsADUrt9qAITKx725C" data-pnid-children="WzDrQonI3eY9GXcne0W3lE">精听</title>
+<style data-page-node-id="baKRxTbQLsgCLXK9gFvVnP" data-pnid-children="EJjolsyyU99Bqdr4S8Audt">
+:root{
+  --blue:#007AFF; --bg:#FFFFFF; --group:#F2F2F7; --card:#FFFFFF;
+  --label:#1C1C1E; --label2:#8E8E93; --label3:#C7C7CC;
+  --sep:rgba(60,60,67,.12); --fill:rgba(118,118,128,.12);
+  --hl:#007AFF; --radius:18px;
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --safe-t:env(safe-area-inset-top,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  background:var(--group); color:var(--label);
+  font-size:15px; line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior:none;
+}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+input{font-family:inherit;font-size:inherit}
+
+/* ---------- 布局 ---------- */
+.view{position:fixed;inset:0;display:none;flex-direction:column;background:var(--group)}
+.view.on{display:flex}
+.nav{
+  height:44px;flex:0 0 auto;display:flex;align-items:center;
+  padding:0 12px;padding-top:var(--safe-t);box-sizing:content-box;
+  background:rgba(242,242,247,.86);backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:.5px solid var(--sep);
+  position:relative;z-index:10;
+}
+.nav .t{position:absolute;left:0;right:0;text-align:center;font-size:17px;font-weight:600;pointer-events:none}
+.nav .l,.nav .r{font-size:17px;color:var(--blue);position:relative;z-index:2;padding:6px 4px}
+.nav .r{margin-left:auto}
+.nav .ic{font-size:20px;line-height:1;color:var(--blue)}
+.body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:24px}
+.body::-webkit-scrollbar,.cues::-webkit-scrollbar{width:0;height:0;display:none}
+.body,.cues{scrollbar-width:none}
+
+/* ---------- 首页 ---------- */
+.hero{padding:32px 20px 8px}
+.hero h1{margin:0 0 7px;font-size:34px;line-height:1.15;font-weight:700;letter-spacing:-.6px}
+.hero p{margin:0;color:var(--label2);font-size:14px;line-height:1.5}
+.sec{font-size:13px;font-weight:500;color:var(--label2);text-transform:none;padding:24px 20px 8px}
+.card{background:var(--card);border-radius:var(--radius);margin:0 16px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:15px 16px;position:relative;min-height:60px}
+.row+.row::before{content:"";position:absolute;left:16px;right:0;top:0;height:.5px;background:var(--sep)}
+.row:active{background:var(--fill)}
+.row .main{flex:1;min-width:0}
+.row .ti{font-size:16px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .su{font-size:13px;color:var(--label2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .chev{color:var(--label3);font-size:15px;font-weight:600}
+.badge{font-size:11px;font-weight:600;color:var(--blue);background:rgba(0,122,255,.1);padding:2px 7px;border-radius:20px}
+.empty{text-align:center;padding:56px 32px;color:var(--label2)}
+.empty .big{font-size:32px;opacity:.2;margin-bottom:12px}
+.empty h3{margin:0 0 8px;font-size:17px;color:var(--label);font-weight:600}
+.empty p{margin:0;font-size:14px;line-height:1.6}
+.addbtn{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  width:calc(100% - 32px);height:50px;border-radius:14px;background:var(--blue);color:var(--bg);
+  font-size:16px;font-weight:600;margin:16px;
+}
+.addbtn:active{opacity:.72}
+
+/* ---------- 播放页 ---------- */
+.pnav{height:44px;display:flex;align-items:center;padding:0 13px;padding-top:var(--safe-t);
+  background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border-bottom:.5px solid var(--sep);flex:0 0 auto;z-index:10}
+.pnav .back{color:var(--blue);font-size:16px;display:flex;align-items:center;gap:1px}
+.pnav .mid{flex:1;text-align:center;font-size:15px;font-weight:600;padding:0 8px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pnav .act{color:var(--blue);font-size:16px}
+
+/* 显示模式分段控件 */
+.seg{display:flex;background:var(--fill);border-radius:9px;padding:2px;margin:10px 16px 0;flex:0 0 auto}
+.seg button{flex:1;padding:6px 0;font-size:13px;font-weight:500;border-radius:7px;color:var(--label);transition:background .18s}
+.seg button.sel{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+
+/* 字幕区 */
+.cues{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 16px 8px;scroll-behavior:smooth}
+.cue{padding:11px 14px;border-radius:12px;margin-bottom:3px;transition:background .22s,color .22s;position:relative}
+.cue .en{font-size:16px;line-height:1.5;color:var(--label);transition:color .22s}
+.cue .zh{font-size:14px;line-height:1.5;color:var(--label2);margin-top:3px;transition:color .22s}
+.cue.active{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.cue.active::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:2px;background:var(--hl)}
+.cue.active .en{font-weight:600;color:var(--label)}
+.cue.active .zh{color:#3C3C43}
+.cue.past .en{color:var(--label2)}
+.cue.past .zh{color:var(--label3)}
+
+/* 显示模式 */
+.cues[data-mode="en"] .zh{display:none}
+.cues[data-mode="zh"] .en{display:none}
+/* 纯中文模式但没译文时，用浅色英文兜底，别留空白 */
+.cues[data-mode="zh"] .cue.nozh .en{display:block;color:var(--label2);font-weight:400}
+.cues[data-mode="en"] .cue.active::before,
+.cues[data-mode="zh"] .cue.active::before{background:var(--hl)}
+
+/* 底部控制 */
+.ctrl{flex:0 0 auto;background:rgba(255,255,255,.94);backdrop-filter:blur(20px);
+  border-top:.5px solid var(--sep);padding:8px 16px calc(10px + var(--safe-b))}
+.bar{display:flex;align-items:center;gap:10px;font-variant-numeric:tabular-nums}
+.bar .tm{font-size:11px;color:var(--label2);width:38px;flex:0 0 auto;text-align:center}
+.bar input[type=range]{flex:1;-webkit-appearance:none;height:4px;border-radius:2px;background:var(--label3);outline:none}
+.bar input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:#fff;
+  box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.btns{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.btns .g{display:flex;align-items:center;gap:26px}
+.ib{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--label)}
+.ib svg{width:26px;height:26px;fill:currentColor}
+.ib.play{width:56px;height:56px;background:var(--blue);color:#fff;box-shadow:0 3px 12px rgba(0,122,255,.32)}
+.ib.play svg{width:26px;height:26px}
+.ib.on{color:var(--blue)}
+.spd{font-size:13px;font-weight:600;color:var(--label2);width:44px;text-align:center;
+  height:44px;display:flex;align-items:center;justify-content:center}
+.spd.on{color:var(--blue)}
+
+/* ---------- 设置 ---------- */
+.grp{background:#fff;border-radius:var(--radius);margin:0 16px;overflow:hidden}
+.fld{padding:12px 16px;position:relative}
+.fld+.fld::before{content:"";position:absolute;left:16px;right:0;top:0;height:.5px;background:var(--sep)}
+.fld label{display:block;font-size:13px;color:var(--label2);margin-bottom:5px}
+.fld input{width:100%;border:0;outline:0;background:var(--fill);border-radius:9px;padding:10px 12px;font-size:15px}
+.fld input::placeholder{color:var(--label3)}
+.note{font-size:12.5px;color:var(--label2);line-height:1.55;padding:8px 22px 0}
+.pill{display:inline-block;font-size:12px;padding:3px 9px;border-radius:20px;background:rgba(0,122,255,.1);color:var(--blue);font-weight:500}
+
+/* 弹层 */
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.32);display:none;align-items:flex-end;z-index:100}
+.sheet.on{display:flex}
+.sheet .panel{background:#fff;width:100%;border-radius:20px 20px 0 0;padding:8px 0 calc(12px + var(--safe-b));
+  animation:up .26s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.sheet .hd{display:flex;align-items:center;padding:8px 20px 4px}
+.sheet .hd .x{font-size:15px;color:var(--label2)}
+.sheet .hd .ok{margin-left:auto;font-size:15px;font-weight:600;color:var(--blue)}
+.sheet .st{text-align:center;font-size:13px;color:var(--label2);padding:12px 0}
+.opt{display:flex;align-items:center;padding:15px 20px;font-size:16px;position:relative}
+.opt+.opt::before{content:"";position:absolute;left:20px;right:0;top:0;height:.5px;background:var(--sep)}
+.opt .ck{margin-left:auto;color:var(--blue);font-weight:600;opacity:0}
+.opt.sel .ck{opacity:1}
+
+.toast{position:fixed;left:50%;bottom:88px;transform:translate(-50%,14px);background:rgba(28,28,30,.92);
+  color:#fff;font-size:13.5px;padding:9px 16px;border-radius:20px;opacity:0;transition:.25s;z-index:200;
+  pointer-events:none;max-width:80vw;text-align:center;line-height:1.4}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.prog{height:2px;background:var(--fill);border-radius:2px;overflow:hidden;margin:6px 16px 0;display:none}
+.prog.on{display:block}
+.prog i{display:block;height:100%;width:0;background:var(--blue);transition:width .3s}
+
+/* 全局深色界面：复用既有颜色 token，不修改 :root */
+body,.view{background:var(--label);color:var(--bg)}
+.nav{background:var(--label);border-color:var(--label2);backdrop-filter:none}
+.card,.grp,.sheet .panel{background:var(--fill);color:var(--bg)}
+.sheet .panel{background:var(--label)}
+.row+.row::before,.fld+.fld::before,.opt+.opt::before{background:var(--label2)}
+.row:active{background:var(--fill)}
+.empty h3{color:var(--bg)}
+.fld input{color:var(--bg)}
+.sheet .st,.note,.row .su,.sec{color:var(--label2)}
+
+/* 播放页：深色阅读界面，沿用现有设计色值 */
+#vPlay{background:var(--label);color:var(--bg)}
+#vPlay .pnav{background:var(--label);border-color:var(--label2);backdrop-filter:none}
+#vPlay .pnav .mid{color:var(--bg);font-size:16px}
+#vPlay .pnav .back,#vPlay .pnav .act{color:var(--blue)}
+#vPlay .seg{background:var(--label);border-bottom:.5px solid var(--label2);border-radius:0;margin:0 16px;padding:8px 0 0}
+#vPlay .seg button{color:var(--label2);border-radius:0;padding:10px 0 12px;box-shadow:none}
+#vPlay .seg button.sel{background:none;color:var(--bg);box-shadow:inset 0 -2px var(--blue)}
+#vPlay .cues{padding:22px 20px 18px}
+#vPlay .reading-head{padding:6px 0 18px}
+#vPlay .reading-head h1{font-size:28px;line-height:1.25;letter-spacing:-.4px;margin:0 0 12px;overflow-wrap:anywhere}
+#vPlay .reading-head p{font-size:13px;color:var(--label2);margin:0}
+#vPlay .cue{padding:8px 0 9px;border-radius:0;margin-bottom:5px}
+#vPlay .cue .en{font-family:Georgia,"Times New Roman",serif;font-size:var(--fs,16px);line-height:1.55;color:var(--bg)}
+#vPlay .cue .en .word.now{text-decoration:underline;text-decoration-color:var(--blue);text-decoration-thickness:2px;text-underline-offset:5px}
+#vPlay .cue .en .word{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.word-action{display:block;color:var(--blue);text-decoration:none}
+.word-action:active{opacity:.7}
+#vPlay .cue .zh{font-size:15px;line-height:1.6;color:var(--label2);margin-top:5px}
+#vPlay .cue.active{background:none;box-shadow:none}
+#vPlay .cue.active::before{left:-12px;top:8px;bottom:8px;background:var(--blue)}
+#vPlay .cue.active .en{color:var(--bg);font-weight:600}
+#vPlay .cue.active .zh{color:var(--label3)}
+#vPlay .cue.past .en{color:var(--label3)}
+#vPlay .cue.past .zh{color:var(--label2)}
+#vPlay .cues[data-mode="zh"] .cue.nozh .en{color:var(--label2)}
+#vPlay .empty h3{color:var(--bg)}
+#vPlay .ctrl{background:var(--label);border-color:var(--label2);backdrop-filter:none;padding:12px 20px calc(12px + var(--safe-b))}
+#vPlay .bar .tm{color:var(--label3);font-size:12px}
+#vPlay .bar input[type=range]{background:var(--label2)}
+#vPlay .bar input[type=range]::-webkit-slider-thumb{background:var(--blue);box-shadow:none}
+#vPlay .btns{margin-top:10px}
+#vPlay .ib{color:var(--bg)}
+#vPlay .ib.play{background:none;color:var(--bg);box-shadow:none}
+#vPlay .ib.play svg{width:32px;height:32px}
+#vPlay .ib.on,#vPlay .spd.on{color:var(--blue)}
+#vPlay .spd{color:var(--label3)}
+#vPlay .tools{display:flex;align-items:center;gap:16px;margin-bottom:10px}
+#vPlay .tool{display:flex;align-items:center;gap:7px;color:var(--label3);font-size:13px}
+#vPlay .tool .ib,#vPlay .tool .spd{width:38px;height:38px}
+#vPlay .btns{justify-content:space-around}
+#vPlay .follow{position:absolute;right:16px;bottom:calc(184px + var(--safe-b));z-index:5;background:var(--blue);color:var(--bg);border-radius:20px;padding:8px 12px;font-size:13px}
+#vPlay .follow[hidden]{display:none}
+
+/* 触屏和小屏：保留安全区，扩大控件触摸范围。 */
+.view,.body,.cues{min-height:0;min-width:0}
+.body,.cues{overscroll-behavior:contain}
+.sheet .panel{max-height:80vh;max-height:80dvh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.fld input{font-size:16px}
+#vPlay .pnav{box-sizing:content-box}
+#vPlay .pnav .mid{min-width:0}
+#vPlay .cues{overflow-wrap:anywhere;touch-action:pan-y}
+#vPlay .tool .ib,#vPlay .tool .spd{width:44px;height:44px}
+#vPlay .bar input[type=range]{min-width:0;height:28px;background:transparent}
+#vPlay .bar input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--label2)}
+#vPlay .bar input[type=range]::-webkit-slider-thumb{width:18px;height:18px;margin-top:-7px}
+#vPlay .bar input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--label2)}
+#vPlay .bar input[type=range]::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:50%;background:var(--blue)}
+@media (max-width:380px){
+  #vPlay .cues{padding-left:16px;padding-right:16px}
+  #vPlay .ctrl{padding-left:14px;padding-right:14px}
+  #vPlay .tools{gap:16px}
+  #vPlay .reading-head h1{font-size:25px}
+}
+@media (max-height:600px){
+  #vPlay .cues{padding-top:12px}
+  #vPlay .reading-head{padding-bottom:8px}
+  #vPlay .cue{margin-bottom:4px;padding-top:7px;padding-bottom:8px}
+  #vPlay .ctrl{padding-top:5px}
+  #vPlay .tools{margin-bottom:2px}
+  #vPlay .btns{margin-top:2px}
+}
+</style>
+</head>
+<body data-page-node-id="JcOiaKSkyhMLzbjc63Fflo">
+
+<!--pnid:ZgAbHBQPwUUcXVZmAcayF7--><!-- ============ 首页 ============ -->
+<div data-page-node-id="0iDVL7StY2L4NMQVREChVz" class="view on" id="vLib">
+  <div data-page-node-id="r14QPRsnwvK38VaBPpTw7i" class="nav">
+    <div data-page-node-id="zC37cG1QaKCNdQETfSpv18" aria-label="设置" class="r" id="btnSet">
+      <svg data-page-node-id="2u0OxJGo4vH6nWZ4i2kT6U" viewBox="0 0 24 24" style="width:22px; height:22px; fill:var(--blue); display:block">
+        <path data-page-node-id="svjCbSMO01RdiQzZ432hkf" d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 1 1 0-7.2 3.6 3.6 0 0 1 0 7.2z"/>
+      </svg>
+    </div>
+  </div>
+  <div data-page-node-id="hSXSjTiXp2AFdzPFaJDUR2" class="body">
+    <div data-page-node-id="IhYrWWDs1R3aknXO4hPSNT" class="hero">
+      <h1 data-page-node-id="3xkOnHgON29O82RxWAeqlG"><!--pnid:k936GQjkQgwNWOhb3D0egq-->精听</h1>
+      <p data-page-node-id="a8R0UVzUBG0znpRgGg6he8"><!--pnid:XwvOUMVeMdKAvj7UuJMuSU-->本地音频 · 逐句字幕 · 中英对照</p>
+    </div>
+    <div data-page-node-id="5M3jsgwWCdfhLRJJvFUKil" class="prog" id="progLib" style="margin:14px 16px 0"><i data-page-node-id="L3hjLN5mbyAnVaEy2Ijt9a"></i></div>
+    <div data-page-node-id="ovzyzVmFMBh2znvWtl0XEY" id="libList"></div>
+    <button data-page-node-id="oi1mAFkDuo72rlah2DbQbX" class="addbtn" id="btnAdd"><span data-page-node-id="YDdmbV9PovyGVFC8fJdQho" style="font-size:20px; line-height:1"><!--pnid:7OX9wqXUlWKpXB67Q4X0ZR-->＋</span><!--pnid:hg2EStZxfTUOj95NGhM8Qj--> 导入材料</button>
+    <div data-page-node-id="vjkuPZStlqRhqrkqo4HnpO" class="note" style="text-align:center; padding-top:0"><!--pnid:C1SZxYHmJ1ESA1avbtCFGW-->
+      音频和字幕可一次全选，同名自动配对<br data-page-node-id="c6eUi0iJmwC2SFXuz1N7dL"><!--pnid:E3S8e9Yf9sS2DbtSZZHaU7-->也可以直接拖入 .zip 包或文件夹
+    </div>
+  </div>
+</div>
+
+<!--pnid:sYvRgJZbcddlpDr9LAl8ws--><!-- ============ 播放页 ============ -->
+<div data-page-node-id="TDCJCxZxVZmY0yfTJbW3mY" class="view" id="vPlay">
+  <div data-page-node-id="0fbjkczJEHnNGCcuj7JRXP" class="pnav">
+    <button data-page-node-id="SCB92peDj5qE1Ic1bUwoJl" class="back" id="btnBack"><span data-page-node-id="GarP4Hh7RxrIwultBV3Mei" style="font-size:19px"><!--pnid:sCQgVISJ3BUTFhCOocm9zw-->‹</span><!--pnid:72hyP1Wy8F6yIGs14jQLoY--> 返回</button>
+    <div data-page-node-id="be7dNq11TCNQ1mIQ0AXTl3" class="mid" id="pTitle"><!--pnid:vepq1C93EXop75aBJMVysT-->—</div>
+    <button data-page-node-id="MWzRRZEYRcNr1Pje1Tbwpp" class="act" id="btnTr"><!--pnid:MT9RylxCAuh44gZoBjEb49-->翻译</button>
+  </div>
+  <div data-page-node-id="4QxJPTfDVH63fKZdfLaKal" class="seg" id="seg">
+    <button data-page-node-id="D9NJJmzQ8Fqpno9RlMX5tP" data-mode="en"><!--pnid:xGtRo1cQcqcaXx8Y4axBiB-->English</button>
+    <button data-page-node-id="ChUP2x1ImzHYmw8CGOalal" class="sel" data-mode="both"><!--pnid:M4cMdo3PEKgjtGNx4LAuE8-->中英对照</button>
+    <button data-page-node-id="64UpCBExz3E3hLXjmqfFlN" data-mode="zh"><!--pnid:CmXF86YbqeC3iRf2hWF9Vc-->中文</button>
+  </div>
+  <div data-page-node-id="7HbvcZLd8pQXJUezZ84O8J" class="prog" id="prog"><i data-page-node-id="zuxFYwSjm33mD1Cooeort6"></i></div>
+  <div data-page-node-id="EERd9OySoC2ed2kPRyuXdE" class="cues" data-mode="both" id="cues"></div>
+  <button class="follow" id="btnFollow" hidden>回到当前句</button>
+  <div data-page-node-id="BCFbOFxog02mpLu7VGrP0P" class="ctrl">
+    <div class="tools">
+      <div class="tool"><button data-page-node-id="F6HryYIxc9M9mPIpjH09H2" class="spd" id="btnSpd">1.0×</button><span>倍速</span></div>
+      <div class="tool"><button data-page-node-id="SXH4q15ttPDYo7NkQxrPKC" aria-label="单句循环" class="ib" id="btnLoop">
+        <svg data-page-node-id="1CbQ3JU7rodQYo1GpmWc5Q" viewBox="0 0 24 24"><path data-page-node-id="qqWipsa4YpZnMjbUSLFSDe" d="M12 4V1L8 5l4 4V6a6 6 0 0 1 6 6 6 6 0 0 1-1.1 3.43l1.5 1.5A8 8 0 0 0 20 12a8 8 0 0 0-8-8zm-6 8a6 6 0 0 1 1.1-3.43l-1.5-1.5A8 8 0 0 0 4 12a8 8 0 0 0 8 8v3l4-4-4-4v3a6 6 0 0 1-6-6z"/></svg>
+      </button><span>单句循环</span></div>
+      <div class="tool"><button class="spd" id="btnSleep" aria-label="定时暂停">◷</button><span id="sleepLabel">定时</span></div>
+    </div>
+    <div data-page-node-id="Su7fuNm1Rj0Zg2mvP82232" class="bar">
+      <span data-page-node-id="QGIzlTibadpuZc64CSSHcx" class="tm" id="tCur"><!--pnid:hRQem5xvOMQ43FIYC8Qvlq-->0:00</span>
+      <input data-page-node-id="O37QVK3L24iDlQMYYu0qw9" id="seek" max="1000" min="0" step="1" type="range" value="0">
+      <span data-page-node-id="IahMwndSNYSr2QvZ56qeTB" class="tm" id="tDur"><!--pnid:wnvdIyhMije0JhrGDyNFVC-->0:00</span>
+    </div>
+    <div data-page-node-id="Nf4pFUfXKsLcbBZRNv16Eb" class="btns">
+        <button data-page-node-id="WaVvntb0gthIZJKLbmqK4H" aria-label="上一句" class="ib" id="btnPrev">
+          <svg data-page-node-id="V2skPTZZ3G9YumNAfW012g" viewBox="0 0 24 24"><path data-page-node-id="Ge8ygk6SGzv7oUr6EJuRO0" d="M7 5h2v14H7zM20 5.5v13a1 1 0 0 1-1.5.87l-9-6.5a1 1 0 0 1 0-1.74l9-6.5A1 1 0 0 1 20 5.5z"/></svg>
+        </button>
+      <button data-page-node-id="mxuiMIn0n0fKQjgQfEmWBm" aria-label="播放" class="ib play" id="btnPlay">
+        <svg data-page-node-id="pM0eOHcxaGAwALQ2Iy2HJY" id="icoPlay" viewBox="0 0 24 24"><path data-page-node-id="pfu8FqRQNHyZUkWl83aRCH" d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z"/></svg>
+        <svg data-page-node-id="hYT2Ud1Z8pNnnk0d52gEPx" id="icoPause" viewBox="0 0 24 24" style="display:none"><path data-page-node-id="4dzf58G6iE55Rt6UNNcIMo" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      </button>
+        <button data-page-node-id="pCMckhY45ahkCpZp2yzDgr" aria-label="下一句" class="ib" id="btnNext">
+          <svg data-page-node-id="FunMqFkFvfDXgJnzjOx4Rw" viewBox="0 0 24 24"><path data-page-node-id="eMXrAlNV4iI9csnSrtKOea" d="M15 5h2v14h-2zM4 5.5v13a1 1 0 0 0 1.5.87l9-6.5a1 1 0 0 0 0-1.74l-9-6.5A1 1 0 0 0 4 5.5z"/></svg>
+        </button>
+    </div>
+  </div>
+</div>
+
+<!--pnid:F6e2Q4GLElyeAAaUecm52C--><!-- ============ 设置页 ============ -->
+<div data-page-node-id="Ak4qnaWt8RpAmNh2Nz7J6y" class="view" id="vSet">
+  <div data-page-node-id="gTiUHO0K9ctgBnwHk5wROU" class="nav">
+    <button data-page-node-id="pZhQ72K3EunVJVEqkKi4L7" class="l" id="setBack"><!--pnid:g94qxjCE6BUOKU2PSSCtPk-->‹ 返回</button>
+    <div data-page-node-id="eNIsKKgKNqR2xKM77ripZy" class="t"><!--pnid:UK8xilqcXnm8fpnROByVXW-->设置</div>
+  </div>
+  <div data-page-node-id="Z8vub9k31Sz48k8UIUUQtk" class="body">
+    <div data-page-node-id="z4rDW7LsIehtn32UO74MZc" class="sec"><!--pnid:usU2VCWs5fZazJdfwC9mDm-->大模型（用于翻译）</div>
+    <div data-page-node-id="f7aTpT00v01t8zAxObpW4s" class="grp">
+      <div data-page-node-id="zH9x0CbMxs35HdyKKWdPvt" class="fld"><label data-page-node-id="IUKoIoQo97xSYgxYcLTNna"><!--pnid:tQzVHoZcwkvuL8L0GpWvI2-->接口地址</label>
+        <input data-page-node-id="5mIhEm5bdDGqnCyACVJdlX" autocomplete="off" id="cfgBase" placeholder="https://api.deepseek.com/v1" spellcheck="false"></div>
+      <div data-page-node-id="z4sWrZfJMfqlEd3uVYSJAD" class="fld"><label data-page-node-id="KMow68u1lUjC11RFBALv7F"><!--pnid:FEcl3w3tj72Wgol2LM5rQA-->API Key</label>
+        <input data-page-node-id="4sUWttcLR3uByysPKbUIFP" autocomplete="off" id="cfgKey" placeholder="sk-..." spellcheck="false"></div>
+      <div data-page-node-id="dAhMfgs5KmxKJt0bVVOc80" class="fld"><label data-page-node-id="igLp4p1rOme8eeUswVwzwx"><!--pnid:5WYmdNnQyjgNFdCBTJ6m6g-->模型名</label>
+        <input data-page-node-id="lkuFmENzGGuLvdPFihdmQN" autocomplete="off" id="cfgModel" placeholder="deepseek-chat" spellcheck="false"></div>
+    </div>
+    <div data-page-node-id="1yPGUt47ztruErXlu7nEbY" class="note"><!--pnid:sGxoWWSWVbOSdfbNvo5w7P-->
+      任何 OpenAI 兼容接口都能用。Key 只存在本机浏览器里，不会上传到别处。<br data-page-node-id="aMsVRK8H5omSkbvAWSzLiV"><!--pnid:AmXDC3WX1726ww11HAsbOm-->
+      DeepSeek 地址填 <span data-page-node-id="9Y9yhgU7itTWOLuoyWSwKz" class="pill"><!--pnid:K0g5juQPEjcLqKb5u5mKCp-->https://api.deepseek.com/v1</span><!--pnid:YXQIWZCwipxNQKiIrivudp-->，模型填 <span data-page-node-id="bRQ87TTV8pan90LGoQ8GRI" class="pill"><!--pnid:rEFeIrO8FbcjbrgR7Om8DG-->deepseek-chat</span>
+    </div>
+
+    <div data-page-node-id="T4Bv8OmiwpRmLMzwrUT7Hu" class="sec"><!--pnid:y0qxAADxNjbZ9E8psFykGR-->播放</div>
+    <div data-page-node-id="kIttSZSzjFqiDij9g7AJhG" class="grp">
+      <div data-page-node-id="RSAPBmnyMHTydaYKL8ClEh" class="fld"><label data-page-node-id="ei7aii9NfA5hcKSEMwWYPU"><!--pnid:pBciDmk470K957HRyOfFMK-->字号（字幕正文，px）</label>
+        <input data-page-node-id="wY8pNnltcuoIaCKDRWwNCS" id="cfgFont" max="26" min="13" placeholder="16" step="1" type="number"></div>
+    </div>
+
+    <div data-page-node-id="at1zELSrlvz5vLFHCiqAyx" class="sec"><!--pnid:1cOwP0eDJjUn3NZuooi75A-->数据</div>
+    <div data-page-node-id="vtxIBKLIabqbIvlNPIzNYX" class="grp">
+      <div data-page-node-id="pyWpZTVMuHr3TJRNH3liJz" class="row" id="btnClear"><div data-page-node-id="tTdSGghFUsufOhe7C4hmLi" class="main"><div data-page-node-id="XwowbVYqELyScrY4pHAfOj" class="ti" style="color:#FF3B30"><!--pnid:Vr46t4iPI2t3fVybfoGLry-->清空所有本地数据</div>
+        <div data-page-node-id="hjI7f08Dr31aUw6TLtZ5hJ" class="su"><!--pnid:feIKQbUisIlygloCH5Rp5M-->删除已导入的音频、字幕和译文</div></div></div>
+    </div>
+    <div data-page-node-id="v0YXBaSI4OCuM2zGNg5yx1" class="note"><!--pnid:5tWwGQNWaOLjGNQ2Hwv8HG-->本应用是纯本地网页，没有服务器、没有账号、没有统计，也不会联网<br data-page-node-id="vfquifKjMeVMkKaFfrgcbw"><!--pnid:TPPi9GcqKyJwAYQDneMhba-->（只有你点「翻译」时才会调用你自己填的接口）。</div>
+    <div data-page-node-id="x0BZMZ9PXViDtAACeHpunJ" style="height:40px"></div>
+  </div>
+</div>
+
+<!--pnid:o2wpJCOGuhNHkpfGI6w8bR--><!-- ============ 弹层 ============ -->
+<div data-page-node-id="6tpnC7Chyc52eevO2Tg4Jg" class="sheet" id="sheet">
+  <div data-page-node-id="B4FIgn4bKFrUSuPTd57kSh" class="panel">
+    <div data-page-node-id="nokg75V1sHgbZLY9FJmZRK" class="hd"><button data-page-node-id="FYGiS4tmFDSaQzd7Yn9gqT" class="x" id="sheetX"><!--pnid:kIVxbk8NtAI5ngKE4zWBSA-->取消</button><button data-page-node-id="qPui8LjWRYPkkkJWCu5j7v" class="ok" id="sheetOk"><!--pnid:4nGtD83KHaamTUF2QcZrj1-->完成</button></div>
+    <div data-page-node-id="Qsr6kMAyUmKrF4QmR7CnPO" class="st" id="sheetTitle"></div>
+    <div data-page-node-id="KG0NlrZZ0qs5yfpABq7zvo" id="sheetBody"></div>
+  </div>
+</div>
+
+<div data-page-node-id="UGlBfaLBPiglmvQFZlR9zu" class="toast" id="toast"></div>
+<audio data-page-node-id="nWYMpPMPFuaScNm1mCuMr5" id="audio" preload="metadata"></audio>
+
+<script data-page-node-id="wAu22Gu6DLX9HouRyFhW0W" data-pnid-children="dvlYv6LNpPRGipVJNzsml1">
+"use strict";
+/* ========== 工具 ========== */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const fmtT = t => {
+  if (!isFinite(t) || t < 0) t = 0;
+  const m = Math.floor(t / 60), s = Math.floor(t % 60);
+  return m + ":" + String(s).padStart(2, "0");
+};
+let toastTimer;
+function toast(msg, ms = 1900) {
+  const el = $("#toast");
+  el.textContent = msg; el.classList.add("on");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("on"), ms);
+}
+const CJK = /[\u4e00-\u9fff\u3400-\u4dbf]/;
+
+/* ========== IndexedDB ========== */
+const DB_NAME = "jingting", STORE = "tracks";
+let db = null;
+let memMode = false;
+const mem = new Map();
+function openDB() {
+  return new Promise((res, rej) => {
+    let r;
+    try { r = indexedDB.open(DB_NAME, 1); } catch (e) { rej(e); return; }
+    r.onupgradeneeded = e => {
+      const d = e.target.result;
+      if (!d.objectStoreNames.contains(STORE)) d.createObjectStore(STORE, { keyPath: "id" });
+    };
+    r.onsuccess = e => { db = e.target.result; res(db); };
+    r.onerror = e => rej(e);
+    r.onblocked = () => rej(new Error("blocked"));
+  });
+}
+function tx(mode) { return db.transaction(STORE, mode).objectStore(STORE); }
+function dbAll() {
+  if (memMode) return Promise.resolve([...mem.values()]);
+  return new Promise((res, rej) => {
+    const q = tx("readonly").getAll();
+    q.onsuccess = () => res(q.result || []);
+    q.onerror = rej;
+  });
+}
+function dbGet(id) {
+  if (memMode) return Promise.resolve(mem.get(id));
+  return new Promise((res, rej) => {
+    const q = tx("readonly").get(id);
+    q.onsuccess = () => res(q.result);
+    q.onerror = rej;
+  });
+}
+function dbPut(obj) {
+  if (memMode) { mem.set(obj.id, obj); return Promise.resolve(); }
+  return new Promise((res, rej) => {
+    const q = tx("readwrite").put(obj);
+    q.onsuccess = () => res();
+    q.onerror = rej;
+  });
+}
+function dbDel(id) {
+  if (memMode) { mem.delete(id); return Promise.resolve(); }
+  return new Promise((res, rej) => {
+    const q = tx("readwrite").delete(id);
+    q.onsuccess = () => res();
+    q.onerror = rej;
+  });
+}
+function dbClear() {
+  if (memMode) { mem.clear(); return Promise.resolve(); }
+  return new Promise((res, rej) => { const q = tx("readwrite").clear(); q.onsuccess = res; q.onerror = rej; });
+}
+
+/* ========== 配置 ========== */
+const CFG_KEY = "jingting.cfg";
+let cfg = { base: "", key: "", model: "", font: 16 };
+try { Object.assign(cfg, JSON.parse(localStorage.getItem(CFG_KEY) || "{}")); } catch (e) {}
+function saveCfg() { try { localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); } catch (e) {} }
+
+/* ========== SRT 解析 ========== */
+/* 返回 [{s,e,en,zh}]，自动把中英混排的 cue 拆成英文/中文两行 */
+function parseSRT(text) {
+  text = text.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
+  const blocks = text.split(/\n{2,}/);
+  const out = [];
+  const TS = /(\d{1,2}):(\d{2}):(\d{2})[.,](\d{1,3})\s*-->\s*(\d{1,2}):(\d{2}):(\d{2})[.,](\d{1,3})/;
+  for (const b of blocks) {
+    const lines = b.split("\n").filter(l => l.trim() !== "");
+    if (!lines.length) continue;
+    let idx = 0;
+    if (/^\d+$/.test(lines[0].trim())) idx = 1;
+    const m = TS.exec(lines[idx] || "");
+    if (!m) continue;
+    const toS = (h, mi, s, ms) => (+h) * 3600 + (+mi) * 60 + (+s) + (+ms.padEnd(3, "0")) / 1000;
+    const s = toS(m[1], m[2], m[3], m[4]);
+    const e = toS(m[5], m[6], m[7], m[8]);
+    const body = lines.slice(idx + 1).join("\n").trim();
+    if (!body) continue;
+    // 去掉 html 标签与 {\an8} 之类
+    const clean = body.replace(/<[^>]+>/g, "").replace(/\{[^}]*\}/g, "").trim();
+    const parts = clean.split("\n").map(l => l.trim()).filter(Boolean);
+    let en = "", zh = "";
+    if (parts.length === 1) {
+      if (CJK.test(parts[0])) zh = parts[0]; else en = parts[0];
+    } else {
+      const zhLines = parts.filter(p => CJK.test(p));
+      const enLines = parts.filter(p => !CJK.test(p));
+      zh = zhLines.join(" ");
+      en = enLines.join(" ");
+      if (!en && zh) en = "";           // 只有中文
+      if (!zh && en) zh = "";
+    }
+    out.push({ s, e, en, zh });
+  }
+  // 保证时间递增、无重叠
+  for (let i = 1; i < out.length; i++) {
+    if (out[i].s < out[i - 1].e - 0.05 && out[i].s < out[i - 1].s) {
+      out[i].s = out[i - 1].e;
+    }
+    if (out[i].e <= out[i].s) out[i].e = out[i].s + 0.4;
+  }
+  return out;
+}
+
+/* 仅在字幕内容完全对应时保留按句编号缓存的译文。 */
+function sameCueContent(previous, next) {
+  return !!previous && previous.length === next.length && previous.every((c, i) =>
+    c.en === next[i].en && c.zh === next[i].zh);
+}
+
+/* ========== 播放页状态 ========== */
+let cur = null;          // 当前 track 对象
+let cues = [];           // 当前字幕
+let curIdx = -1;
+let lastUrl = null;
+let loopOne = false;
+let rate = 1.0;
+let mode = "both";
+try { mode = localStorage.getItem("jingting.mode") || "both"; } catch (e) {}
+const RATES = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0];
+const audio = $("#audio");
+
+/* ========== 首页渲染 ========== */
+/* 列表排序：新批次在上，同一批内按「考次 → 套次」排 */
+const CN_NUM = { "一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9, "十": 10 };
+function sortKey(n) {
+  const m = String(n).match(/(\d{4})\D{0,2}(\d{1,2})/);
+  const y = m ? +m[1] : 0, mo = m ? +m[2] : 0;
+  const s = String(n).match(/第([一二三四五六七八九十]|\d+)/);
+  const sai = s ? (CN_NUM[s[1]] || parseInt(s[1], 10) || 0) : 0;
+  return y * 10000 + mo * 100 + sai;
+}
+async function renderLib() {
+  const list = (await dbAll()).sort((a, b) => {
+    if (b.createdAt !== a.createdAt) return b.createdAt - a.createdAt;
+    const ka = sortKey(a.name), kb = sortKey(b.name);
+    if (Math.floor(ka / 100) !== Math.floor(kb / 100)) return kb - ka; // 考次新的在上
+    return (ka % 100) - (kb % 100);                                    // 同考次第一套在前
+  });
+  const box = $("#libList");
+  if (!list.length) {
+    box.innerHTML = `<div class="empty">
+      <h3>还没有材料</h3>
+      <p>点下面的按钮导入音频和字幕，<br>整包一次导入，同名自动配对。</p></div>`;
+    return;
+  }
+  box.innerHTML = `<div class="sec">我的材料 · ${list.length}</div>
+    <div class="card">${list.map(t => `
+      <div class="row" data-id="${t.id}">
+        <div class="main">
+          <div class="ti">${esc(t.name)}</div>
+          <div class="su">${t.cues ? t.cues.length + " 句字幕" : "无字幕"}${t.trCount ? " · 已翻译" : ""}
+            ${t.duration ? " · " + fmtT(t.duration) : ""}</div>
+        </div>
+        ${t.cues ? '<span class="badge">可精听</span>' : ""}
+        <span class="chev">›</span>
+      </div>`).join("")}</div>
+    <div class="note" style="text-align:center;padding-top:14px">长按可删除</div>`;
+  $$("#libList .row").forEach(r => {
+    const id = r.dataset.id;
+    r.addEventListener("click", () => openTrack(id));
+    let tm;
+    r.addEventListener("touchstart", () => { tm = setTimeout(async () => {
+      if (confirm("删除这个材料？")) { await dbDel(id); renderLib(); }
+    }, 650); }, { passive: true });
+    r.addEventListener("touchend", () => clearTimeout(tm));
+    r.addEventListener("touchmove", () => clearTimeout(tm), { passive: true });
+    r.addEventListener("contextmenu", e => { e.preventDefault(); if (confirm("删除这个材料？")) dbDel(id).then(renderLib); });
+  });
+}
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+/* ========== 导入：批量 ========== */
+const AUD_EXT = ["mp3", "m4a", "wav", "aac", "ogg", "flac", "mp4", "m4b", "opus", "webm"];
+const SUB_EXT = ["srt", "vtt", "txt"];
+
+const extOf = n => { const i = n.lastIndexOf("."); return i < 0 ? "" : n.slice(i + 1).toLowerCase(); };
+const baseOf = n => { const i = n.lastIndexOf("."); return i < 0 ? n : n.slice(0, i); };
+/* 归一化文件名，用于把音频和字幕配成一对 */
+/* 注意：track.name 已经去过扩展名，只有真后缀才切，别把 "2024.12" 的 .12 当后缀 */
+function stripExt(n) {
+  const i = n.lastIndexOf(".");
+  if (i <= 0) return n;
+  const e = n.slice(i + 1).toLowerCase();
+  if (AUD_EXT.includes(e) || SUB_EXT.includes(e) || e === "zip") return n.slice(0, i);
+  return n;
+}
+function normKey(s) {
+  return stripExt(s).toLowerCase()
+    .replace(/[\s_\-–—.·、,，()（）\[\]【】'"《》]/g, "");
+}
+/* 再去掉分P后缀：xxx-P9 / xxx_3 / xxx-p2 */
+const normKey2 = s => normKey(s).replace(/(p|part|第)?\d+$/, "");
+
+/* 读文本，自动识别 UTF-8 / GBK */
+async function readText(f) {
+  let buf;
+  if (f.arrayBuffer) buf = await f.arrayBuffer();
+  else buf = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsArrayBuffer(f); });
+  try { return new TextDecoder("utf-8", { fatal: true }).decode(buf); }
+  catch (e) { try { return new TextDecoder("gbk").decode(buf); } catch (_) { return new TextDecoder().decode(buf); } }
+}
+
+/* ---------- 极简 zip 解包（浏览器原生，无依赖） ---------- */
+async function inflateRaw(u8) {
+  if (!window.DecompressionStream) throw new Error("浏览器不支持解压，请升级");
+  const st = new Blob([u8]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+  return new Uint8Array(await new Response(st).arrayBuffer());
+}
+function zipName(bytes, utf8Flag) {
+  if (utf8Flag) return new TextDecoder("utf-8").decode(bytes);
+  try { return new TextDecoder("utf-8", { fatal: true }).decode(bytes); }
+  catch (e) { try { return new TextDecoder("gbk").decode(bytes); } catch (_) { return new TextDecoder().decode(bytes); } }
+}
+/* 返回 [{name, size, get()}]，get() 时才真正解压，避免一次性占满内存 */
+function listZip(buf) {
+  const dv = new DataView(buf), u8 = new Uint8Array(buf);
+  let eocd = -1;
+  for (let i = buf.byteLength - 22; i >= Math.max(0, buf.byteLength - 65557); i--) {
+    if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
+  }
+  if (eocd < 0) throw new Error("这不是有效的 zip");
+  const count = dv.getUint16(eocd + 10, true);
+  let off = dv.getUint32(eocd + 16, true);
+  const out = [];
+  for (let n = 0; n < count; n++) {
+    if (off + 46 > buf.byteLength || dv.getUint32(off, true) !== 0x02014b50) break;
+    const flag = dv.getUint16(off + 8, true);
+    const method = dv.getUint16(off + 10, true);
+    const compSize = dv.getUint32(off + 20, true);
+    const nameLen = dv.getUint16(off + 28, true);
+    const extraLen = dv.getUint16(off + 30, true);
+    const cmtLen = dv.getUint16(off + 32, true);
+    const localOff = dv.getUint32(off + 42, true);
+    const name = zipName(u8.subarray(off + 46, off + 46 + nameLen), !!(flag & 0x800));
+    off += 46 + nameLen + extraLen + cmtLen;
+    if (/\/$/.test(name)) continue;
+    const base = name.split("/").pop();
+    if (!base || base.startsWith(".") || /^__MACOSX/.test(name)) continue;
+    const item = { name, size: compSize, method, localOff };
+    item.get = async () => {
+      const lNameLen = dv.getUint16(localOff + 26, true);
+      const lExtraLen = dv.getUint16(localOff + 28, true);
+      const start = localOff + 30 + lNameLen + lExtraLen;
+      const comp = u8.subarray(start, start + compSize);
+      if (method === 0) return comp;
+      if (method === 8) return inflateRaw(comp);
+      throw new Error("不支持的压缩方式");
+    };
+    out.push(item);
+  }
+  return out;
+}
+
+/* ---------- 配对：音频名 ↔ 字幕名 ---------- */
+function pairUp(items, subs) {
+  const pairs = [];
+  const used = new Set();
+  const take = (it, s) => { if (used.has(s)) return false; used.add(s); pairs.push([it, s]); return true; };
+  // 1. 完全同名
+  items.forEach(it => {
+    const k = normKey(it.name);
+    const s = subs.find(x => !used.has(x) && normKey(x.name) === k);
+    if (s) take(it, s);
+  });
+  // 2. 去掉分P编号后同名
+  items.forEach(it => {
+    if (pairs.some(p => p[0] === it)) return;
+    const k = normKey2(it.name);
+    if (!k) return;
+    const s = subs.find(x => !used.has(x) && normKey2(x.name) === k);
+    if (s) take(it, s);
+  });
+  // 3. 互相包含，取最短的作为最佳
+  items.forEach(it => {
+    if (pairs.some(p => p[0] === it)) return;
+    const k = normKey(it.name);
+    const cands = subs.filter(x => !used.has(x)).filter(x => {
+      const ks = normKey(x.name);
+      return ks && (k.includes(ks) || ks.includes(k));
+    }).sort((a, b) => normKey(a.name).length - normKey(b.name).length);
+    if (cands.length) take(it, cands[0]);
+  });
+  return pairs;
+}
+
+/* ---------- 主流程：一批文件进来 ---------- */
+let importing = false;
+async function importBatch(inputFiles, fromZip) {
+  if (importing) { toast("还在导入上一批"); return; }
+  importing = true;
+  const bar = $("#progLib"), fill = bar.querySelector("i");
+  const total0 = inputFiles.length;
+  try {
+    // 展开 zip
+    let files = inputFiles;
+    if (fromZip) {
+      const expanded = [];
+      for (let i = 0; i < files.length; i++) {
+        const f = files[i];
+        toast(`解压 ${i + 1}/${total0}：${f.name}`, 20000);
+        const entries = listZip(await f.arrayBuffer());
+        for (const e of entries) {
+          const base = e.name.split("/").pop();
+          const ext = extOf(base);
+          if (!AUD_EXT.includes(ext) && !SUB_EXT.includes(ext)) continue;
+          expanded.push({ name: base, size: e.size, get: e.get });
+        }
+      }
+      files = expanded;
+      if (!files.length) { toast("压缩包里没有音频或字幕"); return; }
+    }
+
+    // 分拣
+    const audios = [], subs = [];
+    for (const f of files) {
+      const e = extOf(f.name);
+      if (SUB_EXT.includes(e)) subs.push(f);
+      else if (AUD_EXT.includes(e) || /^(audio|video)\//.test(f.type || "")) audios.push(f);
+    }
+    if (!audios.length && !subs.length) { toast("没找到音频或字幕文件"); return; }
+
+    const steps = Math.max(1, audios.length + subs.length);
+    let done = 0;
+    bar.classList.add("on"); fill.style.width = "0%";
+    const tick = () => { done++; fill.style.width = Math.round(done / steps * 100) + "%"; };
+
+    // 把音频/字幕条目统一取成 File
+    const toFile = async it => {
+      if (it instanceof File) return it;
+      const data = await it.get();
+      return new File([data], it.name, { type: mimeOf(it.name) });
+    };
+
+    // 已有材料，用来做"同名覆盖"而不是堆一堆重复
+    const existMap = new Map((await dbAll()).map(t => [normKey(t.name), t]));
+    // 同一批用同一个时间戳，列表里才能按考次规整排列
+    const BATCH_TS = Date.now();
+
+    // 先建音频
+    const created = [];
+    for (let i = 0; i < audios.length; i++) {
+      toast(`导入音频 ${i + 1}/${audios.length}`, 20000);
+      try {
+        const f = await toFile(audios[i]);
+        const key = normKey(f.name);
+        const old = existMap.get(key);
+        const t = old || { id: "t" + Date.now() + Math.random().toString(36).slice(2, 6),
+                           cues: null, tr: {}, progress: 0, duration: 0, createdAt: BATCH_TS };
+        t.name = baseOf(f.name);
+        t.size = f.size; t.mime = f.type; t.blob = f;
+        t.tr = t.tr || {};
+        if (!t.duration) t.duration = await probeDuration(f);
+        await dbPut(t);
+        created.push(t);
+        await new Promise(r => setTimeout(r, 0));
+      } catch (e) { console.error(e); }
+      tick();
+    }
+
+    // 再挂字幕：新音频 + 库里已有的都参与配对
+    let subbed = 0;
+    if (subs.length) {
+      const all = (await dbAll()).sort((a, b) => b.createdAt - a.createdAt);
+      const pairs = pairUp(all, subs);
+      for (let i = 0; i < pairs.length; i++) {
+        const [track, item] = pairs[i];
+        toast(`载入字幕 ${i + 1}/${pairs.length}`, 20000);
+        try {
+          const txt = await readText(await toFile(item));
+          const list = parseSRT(txt);
+          if (!list.length) { console.warn("解析不到字幕", item.name); continue; }
+          // 句数变了，旧译文对不上，清掉
+          if (track.cues && !sameCueContent(track.cues, list)) track.tr = {};
+          track.cues = list;
+          track.trCount = Object.keys(track.tr || {}).length || 0;
+          await dbPut(track);
+          subbed++;
+        } catch (e) { console.error(e); }
+        tick();
+      }
+    }
+    fill.style.width = "100%";
+
+    await renderLib();
+    const n = audios.length;
+    if (n === 1 && !subs.length && created[0]) {
+      await openTrack(created[0].id);
+    } else {
+      const parts = [];
+      if (n) parts.push(`${n} 个音频`);
+      if (subbed) parts.push(`${subbed} 份字幕`);
+      else if (subs.length) parts.push(`0 份字幕（名字没对上）`);
+      toast(parts.length ? "已导入 " + parts.join(" · ") : "没有可导入的内容", 2600);
+    }
+    // 有没有音频没配上字幕，单独提醒
+    if (subs.length && subbed < created.length) {
+      setTimeout(() => toast(`有 ${created.length - subbed} 个音频没配到字幕，检查文件名是否一致`, 3200), 2800);
+    }
+  } catch (e) {
+    console.error(e);
+    toast("导入失败：" + (e.message || e.name));
+  } finally {
+    importing = false;
+    setTimeout(() => { bar.classList.remove("on"); fill.style.width = "0%"; }, 600);
+  }
+}
+
+/* 只读元数据拿时长，导入时就把列表填满 */
+function probeDuration(file) {
+  return new Promise(res => {
+    let u;
+    try { u = URL.createObjectURL(file); } catch (e) { res(0); return; }
+    const a = new Audio();
+    const done = d => { try { URL.revokeObjectURL(u); } catch (e) {} res(d || 0); };
+    a.preload = "metadata";
+    a.onloadedmetadata = () => done(a.duration);
+    a.onerror = () => done(0);
+    setTimeout(() => done(a.duration || 0), 4000);
+    a.src = u;
+  });
+}
+
+function mimeOf(name) {  const e = extOf(name);
+  return { mp3: "audio/mpeg", m4a: "audio/mp4", wav: "audio/wav", aac: "audio/aac",
+    ogg: "audio/ogg", opus: "audio/ogg", flac: "audio/flac", mp4: "video/mp4",
+    webm: "audio/webm", srt: "text/plain", vtt: "text/vtt", txt: "text/plain" }[e] || "";
+}
+
+/* ---------- 各种选择入口 ---------- */
+const fileInput = document.createElement("input");
+fileInput.type = "file";
+fileInput.multiple = true;
+fileInput.accept = "audio/*,video/mp4,.mp3,.m4a,.wav,.aac,.ogg,.flac,.srt,.vtt,.txt,.zip,application/zip";
+fileInput.style.display = "none";
+document.body.appendChild(fileInput);
+fileInput.onchange = () => {
+  const fs = [...(fileInput.files || [])];
+  fileInput.value = "";
+  if (fs.length) importBatch(fs, fs.some(f => extOf(f.name) === "zip"));
+};
+
+const dirInput = document.createElement("input");
+dirInput.type = "file";
+dirInput.multiple = true;
+dirInput.webkitdirectory = true;
+dirInput.style.display = "none";
+document.body.appendChild(dirInput);
+dirInput.onchange = () => {
+  const fs = [...(dirInput.files || [])];
+  dirInput.value = "";
+  if (fs.length) importBatch(fs, false);
+};
+
+$("#btnAdd").onclick = openImportSheet;
+
+function openImportSheet() {
+  $("#sheetTitle").textContent = "导入材料";
+  $("#sheetOk").style.display = "none";
+  $("#sheetBody").innerHTML = `
+    <div class="opt" id="imFiles"><div>选择文件
+      <div style="font-size:12.5px;color:var(--label2);margin-top:3px">音频 + 字幕一次全选，可多选</div></div>
+      <span class="ck">›</span></div>
+    <div class="opt" id="imDir"><div>选择文件夹
+      <div style="font-size:12.5px;color:var(--label2);margin-top:3px">整个文件夹读进来（电脑/安卓可用）</div></div>
+      <span class="ck">›</span></div>
+    <div class="opt" id="imZip"><div>选择 zip 压缩包
+      <div style="font-size:12.5px;color:var(--label2);margin-top:3px">一次导入一整套材料，最快</div></div>
+      <span class="ck">›</span></div>
+    <div class="st" style="text-align:left;padding:14px 20px 18px;line-height:1.65">
+      规则：<b>文件名相同</b>的音频和字幕自动配对（<code style="font-size:12px">2024.12 第一套.mp3</code> ↔
+      <code style="font-size:12px">2024.12 第一套.srt</code>）。<br>
+      重复导入同名材料会覆盖，译文和进度保留。
+    </div>`;
+  $("#sheet").classList.add("on");
+  $("#imFiles").onclick = () => { closeSheet(); fileInput.click(); };
+  $("#imDir").onclick = () => { closeSheet(); dirInput.click(); };
+  $("#imZip").onclick = () => { closeSheet(); zipInput.click(); };
+}
+
+const zipInput = document.createElement("input");
+zipInput.type = "file";
+zipInput.accept = ".zip,application/zip";
+zipInput.style.display = "none";
+document.body.appendChild(zipInput);
+zipInput.onchange = () => {
+  const fs = [...(zipInput.files || [])];
+  zipInput.value = "";
+  if (fs.length) importBatch(fs, true);
+};
+
+/* ---------- 拖拽 ---------- */
+function readEntry(entry, path, out) {
+  return new Promise(res => {
+    if (entry.isFile) {
+      entry.file(f => { f.__path = path; out.push(f); res(); }, () => res());
+    } else if (entry.isDirectory) {
+      const rd = entry.createReader();
+      const all = [];
+      const next = () => rd.readEntries(async es => {
+        if (!es.length) { for (const e of all) await readEntry(e, path + entry.name + "/", out); res(); return; }
+        all.push(...es); next();
+      }, () => res());
+      next();
+    } else res();
+  });
+}
+let dragDepth = 0;
+document.addEventListener("dragenter", e => { e.preventDefault(); dragDepth++; document.body.style.opacity = ".92"; });
+document.addEventListener("dragover", e => e.preventDefault());
+document.addEventListener("dragleave", e => { if (--dragDepth <= 0) { dragDepth = 0; document.body.style.opacity = ""; } });
+document.addEventListener("drop", async e => {
+  e.preventDefault(); dragDepth = 0; document.body.style.opacity = "";
+  const dt = e.dataTransfer;
+  if (!dt) return;
+  let files = [...(dt.files || [])];
+  // 支持拖文件夹：递归读
+  if (dt.items && dt.items.length && dt.items[0].webkitGetAsEntry) {
+    const out = [];
+    for (const it of dt.items) {
+      const en = it.webkitGetAsEntry && it.webkitGetAsEntry();
+      if (en && en.isDirectory) await readEntry(en, "", out);
+    }
+    if (out.length) files = out;
+  }
+  if (!files.length) return;
+  importBatch(files, files.some(f => extOf(f.name) === "zip"));
+});
+
+/* 单条：给某条材料单独换字幕 */
+const srtInput = document.createElement("input");
+srtInput.type = "file";
+srtInput.accept = ".srt,.vtt,text/plain";
+srtInput.style.display = "none";
+document.body.appendChild(srtInput);
+let srtTarget = null;
+function pickSRT(id) {
+  return new Promise(res => {
+    srtTarget = id;
+    srtInput.value = "";
+    srtInput.onchange = async () => {
+      const f = srtInput.files && srtInput.files[0];
+      srtInput.value = "";
+      if (!f) { res(false); return; }
+      try {
+        const txt = await readText(f);
+        const list = parseSRT(txt);
+        if (!list.length) { toast("没解析出字幕，检查文件格式"); res(false); return; }
+        const t = await dbGet(srtTarget);
+        if (t.cues && !sameCueContent(t.cues, list)) t.tr = {};
+        t.cues = list;
+        t.trCount = Object.keys(t.tr || {}).length;
+        await dbPut(t);
+        toast(`已载入 ${list.length} 句字幕`);
+        if (cur && cur.id === srtTarget) {
+          cues = list; cur = t;
+          renderCues(); updateTrBtn();
+          if (cues.length) setActive(0, true);
+        }
+        res(true);
+      } catch (e) { console.error(e); toast("字幕读取失败"); res(false); }
+    };
+    srtInput.click();
+  });
+}
+
+/* ========== 打开一条材料 ========== */
+async function openTrack(id) {
+  const t = await dbGet(id);
+  if (!t) return;
+  cur = t;
+  followPaused = false;
+  $("#btnFollow").hidden = true;
+  cur.tr = cur.tr || {};
+  cues = t.cues || [];
+  curIdx = -1;
+  $("#pTitle").textContent = t.name;
+  // 音频
+  if (lastUrl) { try { URL.revokeObjectURL(lastUrl); } catch (e) {} }
+  const url = URL.createObjectURL(t.blob);
+  lastUrl = url;
+  audio.src = url;
+  audio.playbackRate = rate;
+  audio.onloadedmetadata = () => {
+    $("#tDur").textContent = fmtT(audio.duration);
+    t.duration = audio.duration;
+    dbPut(t).catch(() => {});
+    // 恢复上次位置并高亮对应句
+    if (cues.length && t.progress > 1) {
+      const i = findCue(t.progress);
+      if (i >= 0) setActive(i, true);
+    } else if (cues.length) {
+      setActive(0, true);
+    }
+  };
+  audio.onerror = () => toast("这个音频格式浏览器解不了，换成 mp3 试试");
+  if (t.progress > 1 && t.progress < (t.duration || 1e9) - 3) {
+    audio.currentTime = t.progress;
+  }
+  renderCues();
+  setMode(mode, true);
+  show("vPlay");
+  updateTrBtn();
+}
+
+/* SRT 只有句级时间，单词位置在本句时长内估算。 */
+function renderWords(text) {
+  return String(text).split(/([A-Za-z]+(?:['’\-][A-Za-z]+)*|\d+(?:[.,]\d+)*)/g)
+    .map((part, i) => i % 2 ? `<span class="word">${esc(part)}</span>` : esc(part)).join("");
+}
+
+/* 长按后由用户主动点击链接，兼容浏览器对外部应用唤起的限制。 */
+function openWordSheet(word, context) {
+  const url = "eudic://dict/" + encodeURIComponent(word) + "?context=" + encodeURIComponent(context);
+  $("#sheetTitle").textContent = word;
+  $("#sheetOk").style.display = "none";
+  $("#sheetBody").innerHTML = `<a class="opt word-action" id="openEudic" href="${esc(url)}">在欧路词典中查词<span class="ck" style="opacity:1">›</span></a>
+    <div class="st" style="text-align:left;padding:12px 20px 20px;line-height:1.6">打开欧路词典后，可以查看释义并加入它的生词本。请先在本设备安装欧路词典。</div>`;
+  $("#sheet").classList.add("on");
+}
+
+function renderCues() {
+  const box = $("#cues");
+  if (!cues.length) {
+    box.innerHTML = `<div class="empty" style="padding-top:70px">
+      <div class="big">📄</div><h3>还没有字幕</h3>
+      <p>点右上角「<b>字幕</b>」按钮<br>导入同名的 .srt 文件，就能逐句精听了。</p></div>`;
+    return;
+  }
+  box.innerHTML = `<div class="reading-head"><h1>${esc(cur ? cur.name : "")}</h1><p>共 ${cues.length} 句字幕</p></div>` + cues.map((c, i) => `
+    <div class="cue${c.zh || (cur && cur.tr && cur.tr[i]) ? "" : " nozh"}" data-i="${i}">
+      <div class="en">${renderWords(c.en || "—")}</div>
+      ${c.zh || (cur && cur.tr && cur.tr[i]) ? `<div class="zh">${esc(c.zh || cur.tr[i])}</div>` : `<div class="zh" style="display:none"></div>`}
+    </div>`).join("");
+  $$("#cues .cue").forEach(el => {
+    let pressTimer = null, startX = 0, startY = 0, suppressClick = false;
+    const cancelPress = () => { clearTimeout(pressTimer); pressTimer = null; };
+    const showWord = word => {
+      cancelPress();
+      suppressClick = true;
+      setTimeout(() => { suppressClick = false; }, 900);
+      openWordSheet(word.textContent, cues[+el.dataset.i].en || "");
+    };
+    el.addEventListener("pointerdown", e => {
+      const word = e.target.closest(".word");
+      if (!word || (e.pointerType === "mouse" && e.button !== 0)) return;
+      cancelPress(); startX = e.clientX; startY = e.clientY;
+      pressTimer = setTimeout(() => {
+        if (el.isConnected && $("#vPlay").classList.contains("on")) showWord(word);
+      }, 550);
+    });
+    el.addEventListener("pointermove", e => {
+      if (Math.hypot(e.clientX - startX, e.clientY - startY) > 10) cancelPress();
+    });
+    el.addEventListener("pointerup", cancelPress);
+    el.addEventListener("pointercancel", cancelPress);
+    el.addEventListener("pointerleave", cancelPress);
+    el.addEventListener("contextmenu", e => {
+      const word = e.target.closest(".word");
+      if (!word) return;
+      e.preventDefault(); showWord(word);
+    });
+    el.addEventListener("click", () => {
+      if (suppressClick) { suppressClick = false; return; }
+      const i = +el.dataset.i;
+      setActive(i, false);          // 先更新当前句，避免被单句循环拉回
+      audio.currentTime = cues[i].s + 0.01;
+      if (audio.paused) audio.play().catch(() => {});
+    });
+  });
+  scrollToCue(curIdx, true);
+}
+
+/* 只补译文的渲染（翻译完调用） */
+function applyTr() {
+  if (!cur || !cur.tr) return;
+  $$("#cues .cue").forEach(el => {
+    const i = +el.dataset.i;
+    const zh = el.querySelector(".zh");
+    if (!zh) return;
+    const text = (cues[i] && cues[i].zh) || cur.tr[i];
+    if (text) { zh.textContent = text; zh.style.display = ""; el.classList.remove("nozh"); }
+  });
+}
+
+/* ========== 视图切换 ========== */
+function show(v) {
+  $$(".view").forEach(el => el.classList.remove("on"));
+  $("#" + v).classList.add("on");
+}
+$("#btnSet").onclick = () => { fillSet(); show("vSet"); };
+$("#setBack").onclick = () => { saveCfg(); show("vLib"); };
+$("#btnBack").onclick = () => {
+  audio.pause();
+  if (cur) { cur.progress = audio.currentTime; dbPut(cur).catch(() => {}); }
+  show("vLib"); renderLib();
+};
+
+/* ========== 播放控制 ========== */
+function setMode(m, silent) {
+  mode = m;
+  try { localStorage.setItem("jingting.mode", m); } catch (e) {}
+  $("#cues").dataset.mode = m;
+  $$("#seg button").forEach(b => b.classList.toggle("sel", b.dataset.mode === m));
+  if (!silent && m !== "en" && cues.some(c => !c.zh) && (!cur.tr || !Object.keys(cur.tr).length)) {
+    toast("需要译文：点右上角「翻译」");
+  }
+}
+$$("#seg button").forEach(b => b.onclick = () => setMode(b.dataset.mode));
+
+$("#btnPlay").onclick = () => {
+  if (!audio.src) { toast("先导入音频"); return; }
+  if (audio.paused) audio.play().catch(e => toast("播放失败：" + e.message));
+  else audio.pause();
+};
+let wordFrame = 0, lastWordFrame = 0;
+function updateWordFrame(now) {
+  if (audio.paused || audio.ended) { wordFrame = 0; return; }
+  if (now - lastWordFrame < 80) { wordFrame = requestAnimationFrame(updateWordFrame); return; }
+  lastWordFrame = now;
+  if (cues.length) {
+    const t = audio.currentTime;
+    if (!loopOne || curIdx < 0 || curIdx >= cues.length) {
+      const i = findCue(t);
+      if (i !== curIdx) setActive(i, true);
+    }
+    updateWordHighlight(t);
+  }
+  wordFrame = requestAnimationFrame(updateWordFrame);
+}
+audio.onplay = () => {
+  if (checkSleepTimer()) return;
+  $("#icoPlay").style.display = "none"; $("#icoPause").style.display = "";
+  if (!wordFrame) wordFrame = requestAnimationFrame(updateWordFrame);
+};
+audio.onpause = () => {
+  $("#icoPlay").style.display = ""; $("#icoPause").style.display = "none";
+  if (wordFrame) cancelAnimationFrame(wordFrame);
+  wordFrame = 0;
+};
+
+$("#btnPrev").onclick = () => jumpCue(-1);
+$("#btnNext").onclick = () => jumpCue(1);
+function jumpCue(d) {
+  if (!cues.length) return;
+  let i = curIdx + d;
+  if (i < 0) i = 0;
+  if (i >= cues.length) i = cues.length - 1;
+  setActive(i, true);              // 先更新，否则单句循环会拉回上一句
+  audio.currentTime = cues[i].s + 0.01;
+  if (audio.paused) audio.play().catch(() => {});
+}
+
+$("#btnLoop").onclick = () => {
+  loopOne = !loopOne;
+  $("#btnLoop").classList.toggle("on", loopOne);
+  toast(loopOne ? "单句循环：开" : "单句循环：关");
+};
+$("#btnLoop").classList.toggle("on", loopOne);
+
+$("#btnSpd").onclick = () => {
+  $("#sheetTitle").textContent = "播放速度";
+  $("#sheetOk").style.display = "none";
+  $("#sheetBody").innerHTML = RATES.map(r => `<button class="opt${r === rate ? " sel" : ""}" style="width:100%" data-rate="${r}">${r === 1 ? "1.0" : r}×<span class="ck">✓</span></button>`).join("");
+  $("#sheet").classList.add("on");
+  $$("#sheetBody [data-rate]").forEach(el => el.onclick = () => {
+    rate = +el.dataset.rate; audio.playbackRate = rate;
+    $("#btnSpd").textContent = (rate === 1 ? "1.0" : String(rate)) + "×";
+    $("#btnSpd").classList.toggle("on", rate !== 1); closeSheet();
+  });
+};
+
+let sleepDeadline = 0, sleepTimer = 0;
+function checkSleepTimer() {
+  if (!sleepDeadline || Date.now() < sleepDeadline) return false;
+  clearTimeout(sleepTimer); sleepTimer = 0; sleepDeadline = 0;
+  audio.pause(); $("#btnSleep").classList.remove("on"); $("#sleepLabel").textContent = "定时";
+  toast("定时结束，已暂停"); return true;
+}
+function setSleepTimer(minutes) {
+  clearTimeout(sleepTimer); sleepTimer = 0;
+  sleepDeadline = minutes ? Date.now() + minutes * 60000 : 0;
+  $("#btnSleep").classList.toggle("on", !!minutes);
+  $("#sleepLabel").textContent = minutes ? minutes + "分钟" : "定时";
+  if (minutes) sleepTimer = setTimeout(checkSleepTimer, minutes * 60000);
+  toast(minutes ? minutes + "分钟后暂停" : "已取消定时");
+}
+$("#btnSleep").onclick = () => {
+  $("#sheetTitle").textContent = "定时暂停"; $("#sheetOk").style.display = "none";
+  $("#sheetBody").innerHTML = [15,30,60,0].map(m => `<button class="opt" style="width:100%" data-sleep="${m}">${m ? m + "分钟后暂停" : "取消定时"}</button>`).join("");
+  $("#sheet").classList.add("on");
+  $$("#sheetBody [data-sleep]").forEach(el => el.onclick = () => { setSleepTimer(+el.dataset.sleep); closeSheet(); });
+};
+document.addEventListener("visibilitychange", () => { if (!document.hidden) checkSleepTimer(); });
+
+/* 进度条 */
+const seek = $("#seek");
+let seeking = false;
+seek.addEventListener("input", () => {
+  seeking = true;
+  const t = (+seek.value / 1000) * (audio.duration || 0);
+  $("#tCur").textContent = fmtT(t);
+});
+seek.addEventListener("change", () => {
+  audio.currentTime = (+seek.value / 1000) * (audio.duration || 0);
+  seeking = false;
+});
+
+/* 核心：时间同步 */
+let lastSave = 0;
+audio.ontimeupdate = () => {
+  const t = audio.currentTime, dur = audio.duration || 0;
+  if (!seeking) {
+    $("#tCur").textContent = fmtT(t);
+    if (dur) seek.value = Math.min(1000, (t / dur) * 1000);
+  }
+  if (!cues.length) return;
+
+  // 单句循环
+  if (loopOne && curIdx >= 0 && curIdx < cues.length) {
+    const c = cues[curIdx];
+    if (t >= c.e - 0.02 && t > c.s) {
+      audio.currentTime = c.s + 0.005;
+      return;
+    }
+  }
+  // 当前句判定
+  const i = findCue(t);
+  if (i !== curIdx) setActive(i, true);
+  updateWordHighlight(t);
+
+  // 每 4 秒存一次进度
+  if (Date.now() - lastSave > 4000) {
+    lastSave = Date.now();
+    if (cur) { cur.progress = t; dbPut(cur).catch(() => {}); }
+  }
+};
+
+/* 二分查找当前句 */
+function findCue(t) {
+  if (!cues.length) return -1;
+  // 还没到第一句时，仍然把第一句当作当前句，避免开头空白处没有高亮
+  if (t + 0.08 < cues[0].s) return 0;
+  let lo = 0, hi = cues.length - 1, ans = -1;
+  while (lo <= hi) {
+    const mid = (lo + hi) >> 1;
+    if (cues[mid].s <= t + 0.08) { ans = mid; lo = mid + 1; }
+    else hi = mid - 1;
+  }
+  if (ans >= 0 && cues[ans].e < t - 0.15) {
+    // 落在句间空白，保持上一句高亮（不回退）
+    return ans;
+  }
+  return ans;
+}
+
+function setActive(i, scroll) {
+  if (i === curIdx && !scroll) return;
+  const old = curIdx;
+  curIdx = i;
+  if (old >= 0) {
+    const p = $(`#cues .cue[data-i="${old}"]`);
+    if (p) {
+      p.classList.remove("active"); p.classList.add("past");
+      const word = p.querySelector(".word.now");
+      if (word) word.classList.remove("now");
+    }
+  }
+  if (i >= 0) {
+    const el = $(`#cues .cue[data-i="${i}"]`);
+    if (el) {
+      // 清理更早的 past（保留视觉层级）
+      el.classList.remove("past");
+      el.classList.add("active");
+      if (scroll !== false) scrollToCue(i);
+    }
+  }
+}
+
+const wordTimingCache = new WeakMap();
+function updateWordHighlight(t) {
+  if (curIdx < 0 || curIdx >= cues.length) return;
+  const el = $(`#cues .cue[data-i="${curIdx}"]`);
+  if (!el) return;
+  let timing = wordTimingCache.get(el);
+  if (!timing) {
+    const words = [...el.querySelectorAll(".word")];
+    let total = 0;
+    const ends = words.map(word => {
+      const length = word.textContent.replace(/[^A-Za-z0-9]/g, "").length;
+      const following = word.nextSibling && word.nextSibling.nodeType === Node.TEXT_NODE ? word.nextSibling.textContent : "";
+      total += Math.sqrt(Math.max(1, length)) + (/^[,;:.!?]/.test(following) ? 0.5 : 0);
+      return total;
+    });
+    timing = { words, ends, total };
+    wordTimingCache.set(el, timing);
+  }
+  const { words, ends, total } = timing, c = cues[curIdx];
+  const old = el.querySelector(".word.now");
+  let index = -1;
+  if (words.length && c.e > c.s && t >= c.s && t <= c.e) {
+    const position = (t - c.s) / (c.e - c.s) * total;
+    index = ends.findIndex(end => position < end);
+    if (index < 0) index = words.length - 1;
+  }
+  const next = index < 0 ? null : words[index];
+  if (old === next) return;
+  if (old) old.classList.remove("now");
+  if (next) next.classList.add("now");
+}
+let scrollTimer, followPaused = false;
+function pauseFollowing() {
+  if (!cues.length) return;
+  followPaused = true; clearTimeout(scrollTimer); $("#btnFollow").hidden = false;
+}
+$("#cues").addEventListener("wheel", pauseFollowing, { passive:true });
+$("#cues").addEventListener("touchmove", pauseFollowing, { passive:true });
+$("#btnFollow").onclick = () => { followPaused = false; $("#btnFollow").hidden = true; scrollToCue(curIdx, true); };
+function scrollToCue(i, instant) {
+  if (followPaused) return;
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => {
+    const box = $("#cues");
+    const el = box.querySelector(`.cue[data-i="${i}"]`);
+    if (!el) return;
+    const target = box.scrollTop + el.getBoundingClientRect().top - box.getBoundingClientRect().top
+      - (box.clientHeight - el.offsetHeight) / 2;
+    box.scrollTo({ top: Math.max(0, target), behavior: instant ? "auto" : "smooth" });
+  }, instant ? 0 : 60);
+}
+
+/* ========== 翻译 ========== */
+$("#btnTr").onclick = async () => {
+  if (!cues.length) { pickSRT(cur.id); return; }
+  if (!cfg.base || !cfg.key) { toast("先去设置里填接口地址和 Key"); setTimeout(() => { fillSet(); show("vSet"); }, 700); return; }
+  openSheet();
+};
+
+function updateTrBtn() {
+  $("#btnTr").textContent = cues.length ? "翻译" : "字幕";
+}
+
+/* 弹层：翻译选项 */
+let sheetMode = null;
+function openSheet() {
+  sheetMode = "tr";
+  $("#sheetTitle").textContent = "翻译 " + cues.length + " 句为中文";
+  const done = cur.tr ? Object.keys(cur.tr).length : 0;
+  $("#sheetBody").innerHTML = `
+    <div class="opt" id="optDo"><div>开始翻译<i style="font-style:normal;color:#8E8E93;font-size:13px"> · 已译 ${done}/${cues.length}</i></div><span class="ck">›</span></div>
+    <div class="opt" id="optRe"><div>重新翻译全部</div><span class="ck">›</span></div>
+    <div class="st" style="text-align:left;padding:14px 20px 20px;line-height:1.6">
+      会把每句英文发到你在设置里填的接口。用 DeepSeek 的话，一套四级听力约几分钱。
+      译文存在本机，下次打开不再请求。
+    </div>`;
+  $("#sheetOk").style.display = "none";
+  $("#sheet").classList.add("on");
+  $("#optDo").onclick = () => { closeSheet(); doTranslate(false); };
+  $("#optRe").onclick = () => { if (confirm("清空已有译文并重新翻译？")) { closeSheet(); doTranslate(true); } };
+}
+function closeSheet() { $("#sheet").classList.remove("on"); }
+$("#sheetX").onclick = closeSheet;
+$("#sheetOk").onclick = closeSheet;
+$("#sheet").addEventListener("click", e => { if (e.target.id === "sheet") closeSheet(); });
+
+let translating = false;
+async function doTranslate(all) {
+  if (translating) { toast("上一项翻译还在结束，请稍后再试"); return; }
+  if (!cur || !cues.length) return;
+  translating = true;
+  const track = cur, sourceCues = cues;
+  const isCurrent = () => cur === track && cues === sourceCues && $("#vPlay").classList.contains("on");
+  try {
+  if (all) { track.tr = {}; track.trCount = 0; await dbPut(track); }
+  if (!isCurrent()) return;
+  const tr = track.tr || (track.tr = {});
+  const todo = [];
+  sourceCues.forEach((c, i) => { if (!tr[i] && c.en) todo.push(i); });
+  if (!todo.length) { toast("已经全部译好了"); return; }
+
+  const bar = $("#prog"), fill = bar.querySelector("i");
+  bar.classList.add("on"); fill.style.width = "0%";
+  let done = 0, fail = 0, stopped = false;
+  const BATCH = 20;
+  toast("翻译中，可以继续滚动看字幕", 2500);
+
+  for (let k = 0; k < todo.length; k += BATCH) {
+    if (!isCurrent()) { stopped = true; break; }
+    const ids = todo.slice(k, k + BATCH);
+    try {
+      const map = await callTranslate(ids.map(i => sourceCues[i].en));
+      if (!isCurrent()) { stopped = true; break; }
+      ids.forEach((idx, j) => {
+        const zh = map[j] || map[String(j + 1)] || map[j + 1];
+        if (zh) tr[idx] = String(zh).trim();
+      });
+      done += ids.length;
+    } catch (e) {
+      if (!isCurrent()) { stopped = true; break; }
+      console.error(e); fail += ids.length;
+    }
+    fill.style.width = Math.round((done + fail) / todo.length * 100) + "%";
+    track.tr = tr;
+    track.trCount = Object.keys(tr).length;
+    applyTr();
+    await dbPut(track).catch(() => {});
+    if (fail && fail === todo.length) break;
+  }
+  bar.classList.remove("on");
+  track.trCount = Object.keys(tr).length;
+  if (!isCurrent()) stopped = true;
+  if (stopped) { toast("已停止翻译，已保存的译文会保留"); return; }
+  if (fail && done === 0) {
+    toast("翻译失败，检查 Key / 地址 / 余额");
+  } else if (fail) {
+    toast(`完成 ${done} 句，${fail} 句失败，可再点一次重试`);
+  } else {
+    toast(`已翻译 ${done} 句`);
+    setMode("both", true);
+    renderLib();
+  }
+  } finally { translating = false; }
+}
+
+/* 调 OpenAI 兼容接口，要求返回 JSON 数组 */
+async function callTranslate(texts) {
+  const base = cfg.base.replace(/\/+$/, "");
+  const url = base + "/chat/completions";
+  const prompt = texts.map((t, i) => (i + 1) + ". " + t).join("\n");
+  const sys = "你是英语学习助手。把下面编号的英文句子逐条翻译成简体中文，保持编号。"
+    + "只输出一个 JSON 数组，不要任何解释、不要 markdown 代码块，格式：[\"译文1\",\"译文2\",...]，顺序与编号一致。";
+  const body = {
+    model: cfg.model || "deepseek-chat",
+    messages: [{ role: "system", content: sys }, { role: "user", content: prompt }],
+    temperature: 0.2,
+    stream: false
+  };
+  const r = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Authorization": "Bearer " + cfg.key },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  const data = await r.json();
+  let txt = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || "";
+  txt = txt.trim().replace(/^```(?:json)?/i, "").replace(/```$/, "").trim();
+  const a = txt.indexOf("["), b = txt.lastIndexOf("]");
+  if (a >= 0 && b > a) txt = txt.slice(a, b + 1);
+  let arr;
+  try { arr = JSON.parse(txt); } catch (e) {
+    // 退化：按行取
+    arr = txt.split("\n").map(l => l.replace(/^\s*\d+[.、)\]]\s*/, "").replace(/^["'\[]|["'\],]?$/g, "").trim()).filter(Boolean);
+  }
+  if (!Array.isArray(arr)) throw new Error("返回格式不对");
+  const out = {};
+  arr.forEach((v, i) => { out[i] = v; });
+  return out;
+}
+
+/* ========== 设置页 ========== */
+function fillSet() {
+  $("#cfgBase").value = cfg.base;
+  $("#cfgKey").value = cfg.key;
+  $("#cfgModel").value = cfg.model;
+  $("#cfgFont").value = cfg.font;
+}
+$("#cfgBase").onchange = e => { cfg.base = e.target.value.trim(); saveCfg(); };
+$("#cfgKey").onchange = e => { cfg.key = e.target.value.trim(); saveCfg(); };
+$("#cfgModel").onchange = e => { cfg.model = e.target.value.trim(); saveCfg(); };
+$("#cfgFont").onchange = e => {
+  const v = Math.max(13, Math.min(26, +e.target.value || 16));
+  cfg.font = v; e.target.value = v; saveCfg();
+  document.documentElement.style.setProperty("--fs", v + "px");
+};
+$("#btnClear").onclick = async () => {
+  if (!confirm("会删除全部音频、字幕和译文，确定？")) return;
+  await dbClear();
+  toast("已清空");
+  renderLib();
+};
+
+/* ========== 启动 ========== */
+(async function init() {
+  $("#btnSpd").textContent = "1.0×";
+  try { await openDB(); } catch (e) { memMode = true; }
+  await renderLib();
+  if (memMode) toast("当前环境禁用了本地存储，导入内容关闭页面后会丢失", 4200);
+  document.documentElement.style.setProperty("--fs", cfg.font + "px");
+  // 恢复上次打开的
+  // 阻止双击缩放
+  document.addEventListener("dblclick", e => e.preventDefault(), { passive: false });
+})();
+</script>
+</body>
+</html>
