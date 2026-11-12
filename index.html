@@ -205,12 +205,20 @@ body,.view{background:var(--label);color:var(--bg)}
 #vPlay .ib.play svg{width:32px;height:32px}
 #vPlay .ib.on,#vPlay .spd.on{color:var(--blue)}
 #vPlay .spd{color:var(--label3)}
-#vPlay .tools{display:flex;align-items:center;gap:16px;margin-bottom:10px}
-#vPlay .tool{display:flex;align-items:center;gap:7px;color:var(--label3);font-size:13px}
+#vPlay .tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-bottom:6px}
+#vPlay .tool{display:flex;flex-direction:column;align-items:center;gap:0;color:var(--label3);font-size:12px}
 #vPlay .tool .ib,#vPlay .tool .spd{width:38px;height:38px}
 #vPlay .btns{justify-content:space-around}
 #vPlay .follow{position:absolute;right:16px;bottom:calc(184px + var(--safe-b));z-index:5;background:var(--blue);color:var(--bg);border-radius:20px;padding:8px 12px;font-size:13px}
 #vPlay .follow[hidden]{display:none}
+.jump-search{padding:4px 20px 10px}
+.jump-search input{width:100%;border:0;outline:0;border-radius:9px;background:var(--fill);color:var(--bg);padding:11px 12px;font-size:16px}
+.jump-list{max-height:48vh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.jump-list .opt{width:100%;text-align:left;gap:12px;color:var(--bg)}
+.jump-list .main{min-width:0;flex:1}
+.jump-list .jump-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.jump-list .jump-meta{color:var(--label2);font-size:12px;margin-top:3px}
+.jump-list .jump-current{color:var(--blue)}
 
 /* 触屏和小屏：保留安全区，扩大控件触摸范围。 */
 .view,.body,.cues{min-height:0;min-width:0}
@@ -229,7 +237,7 @@ body,.view{background:var(--label);color:var(--bg)}
 @media (max-width:380px){
   #vPlay .cues{padding-left:16px;padding-right:16px}
   #vPlay .ctrl{padding-left:14px;padding-right:14px}
-  #vPlay .tools{gap:16px}
+  #vPlay .tools{gap:2px}
   #vPlay .reading-head h1{font-size:25px}
 }
 @media (max-height:600px){
@@ -289,6 +297,7 @@ body,.view{background:var(--label);color:var(--bg)}
         <svg data-page-node-id="1CbQ3JU7rodQYo1GpmWc5Q" viewBox="0 0 24 24"><path data-page-node-id="qqWipsa4YpZnMjbUSLFSDe" d="M12 4V1L8 5l4 4V6a6 6 0 0 1 6 6 6 6 0 0 1-1.1 3.43l1.5 1.5A8 8 0 0 0 20 12a8 8 0 0 0-8-8zm-6 8a6 6 0 0 1 1.1-3.43l-1.5-1.5A8 8 0 0 0 4 12a8 8 0 0 0 8 8v3l4-4-4-4v3a6 6 0 0 1-6-6z"/></svg>
       </button><span>单句循环</span></div>
       <div class="tool"><button class="spd" id="btnSleep" aria-label="定时暂停">◷</button><span id="sleepLabel">定时</span></div>
+      <div class="tool"><button class="spd" id="btnJump" aria-label="段落目录" style="font-size:20px">☰</button><span>目录</span></div>
     </div>
     <div data-page-node-id="Su7fuNm1Rj0Zg2mvP82232" class="bar">
       <span data-page-node-id="QGIzlTibadpuZc64CSSHcx" class="tm" id="tCur"><!--pnid:hRQem5xvOMQ43FIYC8Qvlq-->0:00</span>
@@ -1133,6 +1142,48 @@ function jumpCue(d) {
   audio.currentTime = cues[i].s + 0.01;
   if (audio.paused) audio.play().catch(() => {});
 }
+
+/* 仅识别明确的段落标题；不明确的内容仍可通过全文查找定位。 */
+function findSections(list) {
+  const heading = /^(?:(?:conversation|dialogue|dialog|news\s+report|passage)\s*(?:\d+|one|two|three|four|five)|section\s+[a-z]|(?:第\s*[一二三四五六七八九十\d]+\s*)?(?:段)?(?:对话|新闻报道|短文)\s*[一二三四五六七八九十\d]*)[.。:：\s]*$/i;
+  return list.map((cue, i) => ({ i, title: (cue.en || cue.zh || "").trim() }))
+    .filter(item => heading.test(item.title));
+}
+
+function jumpToIndex(i) {
+  if (!Number.isInteger(i) || i < 0 || i >= cues.length) return;
+  followPaused = false; $("#btnFollow").hidden = true;
+  setActive(i, true);                 // 必须先更新索引，再 seek
+  audio.currentTime = cues[i].s + 0.01;
+  closeSheet();
+}
+
+function openJumpSheet() {
+  if (!cues.length) { toast("请先导入字幕"); return; }
+  const sections = findSections(cues);
+  $("#sheetTitle").textContent = "段落与句子";
+  $("#sheetOk").style.display = "none";
+  $("#sheetBody").innerHTML = `<div class="jump-search"><input id="jumpQuery" type="search" placeholder="输入句号或关键词" aria-label="输入句号或关键词"></div><div id="jumpList" class="jump-list"></div>`;
+  const input = $("#jumpQuery"), list = $("#jumpList");
+  function renderJumpList() {
+    const q = input.value.trim().toLowerCase();
+    let items;
+    if (!q) items = sections;
+    else if (/^\d+$/.test(q)) {
+      const i = Number(q) - 1;
+      items = i >= 0 && i < cues.length ? [{ i, title: cues[i].en || cues[i].zh || "（无文字）" }] : [];
+    } else items = cues.map((c, i) => ({ i, title: c.en || c.zh || "（无文字）", text: ((c.en || "") + " " + (c.zh || "")).toLowerCase() })).filter(item => item.text.includes(q));
+    if (!items.length) {
+      list.innerHTML = `<div class="st">${q ? "没有找到对应的句子" : "没有识别到段落，可输入句号或关键词查找"}</div>`;
+      return;
+    }
+    list.innerHTML = items.map(item => `<button class="opt" data-cue="${item.i}"><span class="main"><span class="jump-text">${esc(item.title)}</span><span class="jump-meta" style="display:block">第 ${item.i + 1} 句 · ${fmtT(cues[item.i].s)}</span></span>${item.i === curIdx ? '<span class="jump-current">当前</span>' : '<span class="chev">›</span>'}</button>`).join("");
+  }
+  input.oninput = renderJumpList;
+  list.onclick = e => { const button = e.target.closest("button[data-cue]"); if (button) jumpToIndex(Number(button.dataset.cue)); };
+  renderJumpList(); $("#sheet").classList.add("on");
+}
+$("#btnJump").onclick = openJumpSheet;
 
 $("#btnLoop").onclick = () => {
   loopOne = !loopOne;
