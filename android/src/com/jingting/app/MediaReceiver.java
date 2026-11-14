@@ -1,0 +1,7 @@
+package com.jingting.app;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+public final class MediaReceiver extends BroadcastReceiver {
+    @Override public void onReceive(Context context, Intent intent) { MainActivity.mediaCommand(intent.getAction()); }
+}

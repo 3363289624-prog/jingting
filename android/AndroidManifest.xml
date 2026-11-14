@@ -1,0 +1,85 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="app.jtpractice.offlineplayer" android:versionCode="9" android:versionName="1.18-test">
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <application android:icon="@drawable/ic_launcher" android:label="精听练习·诊断" android:theme="@android:style/Theme.Material.NoActionBar" android:usesCleartextTraffic="true">
+
+
+        <service android:name="com.jingting.app.PlaybackService" android:exported="false" android:foregroundServiceType="mediaPlayback" />
+        <receiver android:name="com.jingting.app.MediaReceiver" android:exported="false" />
+
+
+        <activity android:name="com.jingting.app.MainActivity" android:exported="true" android:configChanges="orientation|screenSize|keyboardHidden">
+
+
+            <intent-filter>
+
+
+                <action android:name="android.intent.action.MAIN" />
+
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+
+            </intent-filter>
+
+
+        </activity>
+
+
+    </application>
+
+
+</manifest>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

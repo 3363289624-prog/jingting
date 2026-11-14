@@ -1,0 +1,2252 @@
+[
+  {
+    "text": "The international organization made an important announcement.",
+    "file": "reference-00.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "The",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "international",
+        "at": 4,
+        "length": 13,
+        "start": 0.25
+      },
+      {
+        "text": "organization",
+        "at": 18,
+        "length": 12,
+        "start": 0.965
+      },
+      {
+        "text": "made",
+        "at": 31,
+        "length": 4,
+        "start": 1.69
+      },
+      {
+        "text": "an",
+        "at": 36,
+        "length": 2,
+        "start": 1.91
+      },
+      {
+        "text": "important",
+        "at": 39,
+        "length": 9,
+        "start": 2.015
+      },
+      {
+        "text": "announcement",
+        "at": 49,
+        "length": 12,
+        "start": 2.52
+      }
+    ],
+    "duration": 3.95,
+    "speechEnd": 3.2014375
+  },
+  {
+    "text": "It is a beautiful opportunity to learn something new.",
+    "file": "reference-01.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "It",
+        "at": 0,
+        "length": 2,
+        "start": 0.1
+      },
+      {
+        "text": "is",
+        "at": 3,
+        "length": 2,
+        "start": 0.215
+      },
+      {
+        "text": "a",
+        "at": 6,
+        "length": 1,
+        "start": 0.34
+      },
+      {
+        "text": "beautiful",
+        "at": 8,
+        "length": 9,
+        "start": 0.4
+      },
+      {
+        "text": "opportunity",
+        "at": 18,
+        "length": 11,
+        "start": 0.91
+      },
+      {
+        "text": "to",
+        "at": 30,
+        "length": 2,
+        "start": 1.585
+      },
+      {
+        "text": "learn",
+        "at": 33,
+        "length": 5,
+        "start": 1.75
+      },
+      {
+        "text": "something",
+        "at": 39,
+        "length": 9,
+        "start": 2.025
+      },
+      {
+        "text": "new",
+        "at": 49,
+        "length": 3,
+        "start": 2.42
+      }
+    ],
+    "duration": 3.445,
+    "speechEnd": 2.7071875
+  },
+  {
+    "text": "She has been working at the university for several years.",
+    "file": "reference-02.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "She",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "has",
+        "at": 4,
+        "length": 3,
+        "start": 0.325
+      },
+      {
+        "text": "working",
+        "at": 13,
+        "length": 7,
+        "start": 0.68
+      },
+      {
+        "text": "been",
+        "at": 8,
+        "length": 4,
+        "start": 0.49
+      },
+      {
+        "text": "the",
+        "at": 24,
+        "length": 3,
+        "start": 1.165
+      },
+      {
+        "text": "at",
+        "at": 21,
+        "length": 2,
+        "start": 1.06
+      },
+      {
+        "text": "university",
+        "at": 28,
+        "length": 10,
+        "start": 1.27
+      },
+      {
+        "text": "for",
+        "at": 39,
+        "length": 3,
+        "start": 1.96
+      },
+      {
+        "text": "several",
+        "at": 43,
+        "length": 7,
+        "start": 2.12
+      },
+      {
+        "text": "years",
+        "at": 51,
+        "length": 5,
+        "start": 2.525
+      }
+    ],
+    "duration": 3.78,
+    "speechEnd": 3.0349375
+  },
+  {
+    "text": "Take a moment, breathe slowly, and try again.",
+    "file": "reference-03.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "Take",
+        "at": 0,
+        "length": 4,
+        "start": 0.1
+      },
+      {
+        "text": "a",
+        "at": 5,
+        "length": 1,
+        "start": 0.32
+      },
+      {
+        "text": "moment",
+        "at": 7,
+        "length": 6,
+        "start": 0.375
+      },
+      {
+        "text": "breathe",
+        "at": 15,
+        "length": 7,
+        "start": 1.22
+      },
+      {
+        "text": "slowly",
+        "at": 23,
+        "length": 6,
+        "start": 1.47
+      },
+      {
+        "text": "and",
+        "at": 31,
+        "length": 3,
+        "start": 2.32
+      },
+      {
+        "text": "try",
+        "at": 35,
+        "length": 3,
+        "start": 2.445
+      },
+      {
+        "text": "again",
+        "at": 39,
+        "length": 5,
+        "start": 2.705
+      }
+    ],
+    "duration": 3.89,
+    "speechEnd": 3.144875
+  },
+  {
+    "text": "I would like to understand the difference between these ideas.",
+    "file": "reference-04.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "I",
+        "at": 0,
+        "length": 1,
+        "start": 0.1
+      },
+      {
+        "text": "would",
+        "at": 2,
+        "length": 5,
+        "start": 0.21
+      },
+      {
+        "text": "like",
+        "at": 8,
+        "length": 4,
+        "start": 0.39
+      },
+      {
+        "text": "to",
+        "at": 13,
+        "length": 2,
+        "start": 0.61
+      },
+      {
+        "text": "understand",
+        "at": 16,
+        "length": 10,
+        "start": 0.74
+      },
+      {
+        "text": "the",
+        "at": 27,
+        "length": 3,
+        "start": 1.375
+      },
+      {
+        "text": "difference",
+        "at": 31,
+        "length": 10,
+        "start": 1.465
+      },
+      {
+        "text": "between",
+        "at": 42,
+        "length": 7,
+        "start": 1.91
+      },
+      {
+        "text": "these",
+        "at": 50,
+        "length": 5,
+        "start": 2.31
+      },
+      {
+        "text": "ideas",
+        "at": 56,
+        "length": 5,
+        "start": 2.535
+      }
+    ],
+    "duration": 3.88,
+    "speechEnd": 3.136625
+  },
+  {
+    "text": "The development of technology can change our daily lives.",
+    "file": "reference-05.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "The",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "development",
+        "at": 4,
+        "length": 11,
+        "start": 0.2
+      },
+      {
+        "text": "of",
+        "at": 16,
+        "length": 2,
+        "start": 0.84
+      },
+      {
+        "text": "technology",
+        "at": 19,
+        "length": 10,
+        "start": 0.96
+      },
+      {
+        "text": "can",
+        "at": 30,
+        "length": 3,
+        "start": 1.64
+      },
+      {
+        "text": "change",
+        "at": 34,
+        "length": 6,
+        "start": 1.86
+      },
+      {
+        "text": "our",
+        "at": 41,
+        "length": 3,
+        "start": 2.24
+      },
+      {
+        "text": "daily",
+        "at": 45,
+        "length": 5,
+        "start": 2.385
+      },
+      {
+        "text": "lives",
+        "at": 51,
+        "length": 5,
+        "start": 2.735
+      }
+    ],
+    "duration": 3.985,
+    "speechEnd": 3.24025
+  },
+  {
+    "text": "We should consider the environmental consequences carefully.",
+    "file": "reference-06.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "We",
+        "at": 0,
+        "length": 2,
+        "start": 0.1
+      },
+      {
+        "text": "should",
+        "at": 3,
+        "length": 6,
+        "start": 0.23
+      },
+      {
+        "text": "consider",
+        "at": 10,
+        "length": 8,
+        "start": 0.455
+      },
+      {
+        "text": "the",
+        "at": 19,
+        "length": 3,
+        "start": 0.91
+      },
+      {
+        "text": "environmental",
+        "at": 23,
+        "length": 13,
+        "start": 1.04
+      },
+      {
+        "text": "consequences",
+        "at": 37,
+        "length": 12,
+        "start": 1.81
+      },
+      {
+        "text": "carefully",
+        "at": 50,
+        "length": 9,
+        "start": 2.66
+      }
+    ],
+    "duration": 3.97,
+    "speechEnd": 3.2299375
+  },
+  {
+    "text": "Please listen to the conversation and answer the question.",
+    "file": "reference-07.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "Please",
+        "at": 0,
+        "length": 6,
+        "start": 0.1
+      },
+      {
+        "text": "listen",
+        "at": 7,
+        "length": 6,
+        "start": 0.41
+      },
+      {
+        "text": "to",
+        "at": 14,
+        "length": 2,
+        "start": 0.755
+      },
+      {
+        "text": "the",
+        "at": 17,
+        "length": 3,
+        "start": 0.86
+      },
+      {
+        "text": "conversation",
+        "at": 21,
+        "length": 12,
+        "start": 0.95
+      },
+      {
+        "text": "answer",
+        "at": 38,
+        "length": 6,
+        "start": 1.905
+      },
+      {
+        "text": "and",
+        "at": 34,
+        "length": 3,
+        "start": 1.76
+      },
+      {
+        "text": "the",
+        "at": 45,
+        "length": 3,
+        "start": 2.255
+      },
+      {
+        "text": "question",
+        "at": 49,
+        "length": 8,
+        "start": 2.355
+      }
+    ],
+    "duration": 3.695,
+    "speechEnd": 2.955
+  },
+  {
+    "text": "Although it was raining, they decided to continue their journey.",
+    "file": "reference-08.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "Although",
+        "at": 0,
+        "length": 8,
+        "start": 0.1
+      },
+      {
+        "text": "it",
+        "at": 9,
+        "length": 2,
+        "start": 0.41
+      },
+      {
+        "text": "was",
+        "at": 12,
+        "length": 3,
+        "start": 0.515
+      },
+      {
+        "text": "raining",
+        "at": 16,
+        "length": 7,
+        "start": 0.695
+      },
+      {
+        "text": "they",
+        "at": 25,
+        "length": 4,
+        "start": 1.5
+      },
+      {
+        "text": "decided",
+        "at": 30,
+        "length": 7,
+        "start": 1.62
+      },
+      {
+        "text": "to",
+        "at": 38,
+        "length": 2,
+        "start": 2.11
+      },
+      {
+        "text": "continue",
+        "at": 41,
+        "length": 8,
+        "start": 2.22
+      },
+      {
+        "text": "their",
+        "at": 50,
+        "length": 5,
+        "start": 2.7
+      },
+      {
+        "text": "journey",
+        "at": 56,
+        "length": 7,
+        "start": 2.885
+      }
+    ],
+    "duration": 4.03,
+    "speechEnd": 3.2958125
+  },
+  {
+    "text": "This is an interesting example of communication.",
+    "file": "reference-09.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "This",
+        "at": 0,
+        "length": 4,
+        "start": 0.1
+      },
+      {
+        "text": "is",
+        "at": 5,
+        "length": 2,
+        "start": 0.3
+      },
+      {
+        "text": "interesting",
+        "at": 11,
+        "length": 11,
+        "start": 0.53
+      },
+      {
+        "text": "an",
+        "at": 8,
+        "length": 2,
+        "start": 0.42
+      },
+      {
+        "text": "example",
+        "at": 23,
+        "length": 7,
+        "start": 1.06
+      },
+      {
+        "text": "of",
+        "at": 31,
+        "length": 2,
+        "start": 1.575
+      },
+      {
+        "text": "communication",
+        "at": 34,
+        "length": 13,
+        "start": 1.695
+      }
+    ],
+    "duration": 3.34,
+    "speechEnd": 2.603125
+  },
+  {
+    "text": "He said, \"Wait a minute. What do you mean?\"",
+    "file": "reference-10.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "He",
+        "at": 0,
+        "length": 2,
+        "start": 0.1
+      },
+      {
+        "text": "said",
+        "at": 3,
+        "length": 4,
+        "start": 0.245
+      },
+      {
+        "text": "Wait",
+        "at": 10,
+        "length": 4,
+        "start": 1.03
+      },
+      {
+        "text": "a",
+        "at": 15,
+        "length": 1,
+        "start": 1.255
+      },
+      {
+        "text": "minute",
+        "at": 17,
+        "length": 6,
+        "start": 1.31
+      },
+      {
+        "text": "What",
+        "at": 25,
+        "length": 4,
+        "start": 2.56
+      },
+      {
+        "text": "do",
+        "at": 30,
+        "length": 2,
+        "start": 2.74
+      },
+      {
+        "text": "you",
+        "at": 33,
+        "length": 3,
+        "start": 2.945
+      },
+      {
+        "text": "mean",
+        "at": 37,
+        "length": 4,
+        "start": 3.08
+      }
+    ],
+    "duration": 4.22,
+    "speechEnd": 3.482625
+  },
+  {
+    "text": "You can improve your pronunciation with regular practice.",
+    "file": "reference-11.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "You",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "can",
+        "at": 4,
+        "length": 3,
+        "start": 0.235
+      },
+      {
+        "text": "improve",
+        "at": 8,
+        "length": 7,
+        "start": 0.385
+      },
+      {
+        "text": "your",
+        "at": 16,
+        "length": 4,
+        "start": 0.82
+      },
+      {
+        "text": "pronunciation",
+        "at": 21,
+        "length": 13,
+        "start": 0.995
+      },
+      {
+        "text": "with",
+        "at": 35,
+        "length": 4,
+        "start": 1.85
+      },
+      {
+        "text": "regular",
+        "at": 40,
+        "length": 7,
+        "start": 1.995
+      },
+      {
+        "text": "practice",
+        "at": 48,
+        "length": 8,
+        "start": 2.46
+      }
+    ],
+    "duration": 3.88,
+    "speechEnd": 3.1365625
+  },
+  {
+    "text": "A little progress every day is better than doing nothing.",
+    "file": "reference-12.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "A",
+        "at": 0,
+        "length": 1,
+        "start": 0.1
+      },
+      {
+        "text": "little",
+        "at": 2,
+        "length": 6,
+        "start": 0.175
+      },
+      {
+        "text": "progress",
+        "at": 9,
+        "length": 8,
+        "start": 0.425
+      },
+      {
+        "text": "every",
+        "at": 18,
+        "length": 5,
+        "start": 0.97
+      },
+      {
+        "text": "day",
+        "at": 24,
+        "length": 3,
+        "start": 1.23
+      },
+      {
+        "text": "is",
+        "at": 28,
+        "length": 2,
+        "start": 1.46
+      },
+      {
+        "text": "better",
+        "at": 31,
+        "length": 6,
+        "start": 1.59
+      },
+      {
+        "text": "than",
+        "at": 38,
+        "length": 4,
+        "start": 1.875
+      },
+      {
+        "text": "doing",
+        "at": 43,
+        "length": 5,
+        "start": 2.055
+      },
+      {
+        "text": "nothing",
+        "at": 49,
+        "length": 7,
+        "start": 2.335
+      }
+    ],
+    "duration": 3.535,
+    "speechEnd": 2.79575
+  },
+  {
+    "text": "The students discussed their research with the professor.",
+    "file": "reference-13.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "The",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "students",
+        "at": 4,
+        "length": 8,
+        "start": 0.18
+      },
+      {
+        "text": "discussed",
+        "at": 13,
+        "length": 9,
+        "start": 0.695
+      },
+      {
+        "text": "their",
+        "at": 23,
+        "length": 5,
+        "start": 1.14
+      },
+      {
+        "text": "research",
+        "at": 29,
+        "length": 8,
+        "start": 1.315
+      },
+      {
+        "text": "with",
+        "at": 38,
+        "length": 4,
+        "start": 1.755
+      },
+      {
+        "text": "the",
+        "at": 43,
+        "length": 3,
+        "start": 1.905
+      },
+      {
+        "text": "professor",
+        "at": 47,
+        "length": 9,
+        "start": 1.985
+      }
+    ],
+    "duration": 3.385,
+    "speechEnd": 2.6499375
+  },
+  {
+    "text": "I have never seen such an extraordinary performance.",
+    "file": "reference-14.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "I",
+        "at": 0,
+        "length": 1,
+        "start": 0.1
+      },
+      {
+        "text": "have",
+        "at": 2,
+        "length": 4,
+        "start": 0.205
+      },
+      {
+        "text": "never",
+        "at": 7,
+        "length": 5,
+        "start": 0.42
+      },
+      {
+        "text": "seen",
+        "at": 13,
+        "length": 4,
+        "start": 0.705
+      },
+      {
+        "text": "such",
+        "at": 18,
+        "length": 4,
+        "start": 1.025
+      },
+      {
+        "text": "an",
+        "at": 23,
+        "length": 2,
+        "start": 1.315
+      },
+      {
+        "text": "extraordinary",
+        "at": 26,
+        "length": 13,
+        "start": 1.425
+      },
+      {
+        "text": "performance",
+        "at": 40,
+        "length": 11,
+        "start": 2.205
+      }
+    ],
+    "duration": 3.705,
+    "speechEnd": 2.959
+  },
+  {
+    "text": "If you need any assistance, please let me know.",
+    "file": "reference-15.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "If",
+        "at": 0,
+        "length": 2,
+        "start": 0.1
+      },
+      {
+        "text": "need",
+        "at": 7,
+        "length": 4,
+        "start": 0.37
+      },
+      {
+        "text": "any",
+        "at": 12,
+        "length": 3,
+        "start": 0.595
+      },
+      {
+        "text": "you",
+        "at": 3,
+        "length": 3,
+        "start": 0.24
+      },
+      {
+        "text": "assistance",
+        "at": 16,
+        "length": 10,
+        "start": 0.8
+      },
+      {
+        "text": "please",
+        "at": 28,
+        "length": 6,
+        "start": 1.85
+      },
+      {
+        "text": "let",
+        "at": 35,
+        "length": 3,
+        "start": 2.15
+      },
+      {
+        "text": "me",
+        "at": 39,
+        "length": 2,
+        "start": 2.345
+      },
+      {
+        "text": "know",
+        "at": 42,
+        "length": 4,
+        "start": 2.465
+      }
+    ],
+    "duration": 3.5,
+    "speechEnd": 2.76475
+  },
+  {
+    "text": "Some people prefer a quiet place to study.",
+    "file": "reference-16.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "Some",
+        "at": 0,
+        "length": 4,
+        "start": 0.1
+      },
+      {
+        "text": "people",
+        "at": 5,
+        "length": 6,
+        "start": 0.395
+      },
+      {
+        "text": "prefer",
+        "at": 12,
+        "length": 6,
+        "start": 0.735
+      },
+      {
+        "text": "a",
+        "at": 19,
+        "length": 1,
+        "start": 1.13
+      },
+      {
+        "text": "quiet",
+        "at": 21,
+        "length": 5,
+        "start": 1.175
+      },
+      {
+        "text": "place",
+        "at": 27,
+        "length": 5,
+        "start": 1.57
+      },
+      {
+        "text": "to",
+        "at": 33,
+        "length": 2,
+        "start": 1.915
+      },
+      {
+        "text": "study",
+        "at": 36,
+        "length": 5,
+        "start": 2.025
+      }
+    ],
+    "duration": 3.21,
+    "speechEnd": 2.473
+  },
+  {
+    "text": "We cannot predict exactly what will happen tomorrow.",
+    "file": "reference-17.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "We",
+        "at": 0,
+        "length": 2,
+        "start": 0.1
+      },
+      {
+        "text": "cannot",
+        "at": 3,
+        "length": 6,
+        "start": 0.23
+      },
+      {
+        "text": "predict",
+        "at": 10,
+        "length": 7,
+        "start": 0.61
+      },
+      {
+        "text": "exactly",
+        "at": 18,
+        "length": 7,
+        "start": 1.03
+      },
+      {
+        "text": "what",
+        "at": 26,
+        "length": 4,
+        "start": 1.565
+      },
+      {
+        "text": "will",
+        "at": 31,
+        "length": 4,
+        "start": 1.75
+      },
+      {
+        "text": "happen",
+        "at": 36,
+        "length": 6,
+        "start": 1.93
+      },
+      {
+        "text": "tomorrow",
+        "at": 43,
+        "length": 8,
+        "start": 2.26
+      }
+    ],
+    "duration": 3.555,
+    "speechEnd": 2.819625
+  },
+  {
+    "text": "The information is available on the official website.",
+    "file": "reference-18.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "The",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "information",
+        "at": 4,
+        "length": 11,
+        "start": 0.255
+      },
+      {
+        "text": "is",
+        "at": 16,
+        "length": 2,
+        "start": 0.905
+      },
+      {
+        "text": "available",
+        "at": 19,
+        "length": 9,
+        "start": 1.045
+      },
+      {
+        "text": "on",
+        "at": 29,
+        "length": 2,
+        "start": 1.53
+      },
+      {
+        "text": "official",
+        "at": 36,
+        "length": 8,
+        "start": 1.795
+      },
+      {
+        "text": "the",
+        "at": 32,
+        "length": 3,
+        "start": 1.675
+      },
+      {
+        "text": "website",
+        "at": 45,
+        "length": 7,
+        "start": 2.245
+      }
+    ],
+    "duration": 3.64,
+    "speechEnd": 2.893125
+  },
+  {
+    "text": "Do you remember where you put the blue notebook?",
+    "file": "reference-19.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "Do",
+        "at": 0,
+        "length": 2,
+        "start": 0.1
+      },
+      {
+        "text": "you",
+        "at": 3,
+        "length": 3,
+        "start": 0.275
+      },
+      {
+        "text": "remember",
+        "at": 7,
+        "length": 8,
+        "start": 0.445
+      },
+      {
+        "text": "where",
+        "at": 16,
+        "length": 5,
+        "start": 0.91
+      },
+      {
+        "text": "you",
+        "at": 22,
+        "length": 3,
+        "start": 1.11
+      },
+      {
+        "text": "put",
+        "at": 26,
+        "length": 3,
+        "start": 1.24
+      },
+      {
+        "text": "the",
+        "at": 30,
+        "length": 3,
+        "start": 1.46
+      },
+      {
+        "text": "blue",
+        "at": 34,
+        "length": 4,
+        "start": 1.555
+      },
+      {
+        "text": "notebook",
+        "at": 39,
+        "length": 8,
+        "start": 1.82
+      }
+    ],
+    "duration": 3.145,
+    "speechEnd": 2.403125
+  },
+  {
+    "text": "Our responsibility is to make education accessible to everyone.",
+    "file": "reference-20.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "Our",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "responsibility",
+        "at": 4,
+        "length": 14,
+        "start": 0.25
+      },
+      {
+        "text": "is",
+        "at": 19,
+        "length": 2,
+        "start": 1.175
+      },
+      {
+        "text": "make",
+        "at": 25,
+        "length": 4,
+        "start": 1.435
+      },
+      {
+        "text": "to",
+        "at": 22,
+        "length": 2,
+        "start": 1.335
+      },
+      {
+        "text": "education",
+        "at": 30,
+        "length": 9,
+        "start": 1.675
+      },
+      {
+        "text": "accessible",
+        "at": 40,
+        "length": 10,
+        "start": 2.325
+      },
+      {
+        "text": "to",
+        "at": 51,
+        "length": 2,
+        "start": 2.925
+      },
+      {
+        "text": "everyone",
+        "at": 54,
+        "length": 8,
+        "start": 3.08
+      }
+    ],
+    "duration": 4.42,
+    "speechEnd": 3.6803125
+  },
+  {
+    "text": "Please bring a comfortable pair of shoes for the trip.",
+    "file": "reference-21.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "Please",
+        "at": 0,
+        "length": 6,
+        "start": 0.1
+      },
+      {
+        "text": "bring",
+        "at": 7,
+        "length": 5,
+        "start": 0.39
+      },
+      {
+        "text": "comfortable",
+        "at": 15,
+        "length": 11,
+        "start": 0.735
+      },
+      {
+        "text": "a",
+        "at": 13,
+        "length": 1,
+        "start": 0.655
+      },
+      {
+        "text": "pair",
+        "at": 27,
+        "length": 4,
+        "start": 1.32
+      },
+      {
+        "text": "of",
+        "at": 32,
+        "length": 2,
+        "start": 1.63
+      },
+      {
+        "text": "shoes",
+        "at": 35,
+        "length": 5,
+        "start": 1.74
+      },
+      {
+        "text": "for",
+        "at": 41,
+        "length": 3,
+        "start": 2.1
+      },
+      {
+        "text": "the",
+        "at": 45,
+        "length": 3,
+        "start": 2.235
+      },
+      {
+        "text": "trip",
+        "at": 49,
+        "length": 4,
+        "start": 2.325
+      }
+    ],
+    "duration": 3.52,
+    "speechEnd": 2.773375
+  },
+  {
+    "text": "After a short introduction, the speaker explained the experiment.",
+    "file": "reference-22.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "After",
+        "at": 0,
+        "length": 5,
+        "start": 0.1
+      },
+      {
+        "text": "a",
+        "at": 6,
+        "length": 1,
+        "start": 0.41
+      },
+      {
+        "text": "short",
+        "at": 8,
+        "length": 5,
+        "start": 0.46
+      },
+      {
+        "text": "introduction",
+        "at": 14,
+        "length": 12,
+        "start": 0.8
+      },
+      {
+        "text": "the",
+        "at": 28,
+        "length": 3,
+        "start": 1.915
+      },
+      {
+        "text": "speaker",
+        "at": 32,
+        "length": 7,
+        "start": 1.995
+      },
+      {
+        "text": "explained",
+        "at": 40,
+        "length": 9,
+        "start": 2.425
+      },
+      {
+        "text": "the",
+        "at": 50,
+        "length": 3,
+        "start": 2.935
+      },
+      {
+        "text": "experiment",
+        "at": 54,
+        "length": 10,
+        "start": 3.07
+      }
+    ],
+    "duration": 4.515,
+    "speechEnd": 3.7718125
+  },
+  {
+    "text": "There is a considerable difference in their expectations.",
+    "file": "reference-23.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "There",
+        "at": 0,
+        "length": 5,
+        "start": 0.1
+      },
+      {
+        "text": "is",
+        "at": 6,
+        "length": 2,
+        "start": 0.285
+      },
+      {
+        "text": "a",
+        "at": 9,
+        "length": 1,
+        "start": 0.42
+      },
+      {
+        "text": "considerable",
+        "at": 11,
+        "length": 12,
+        "start": 0.475
+      },
+      {
+        "text": "difference",
+        "at": 24,
+        "length": 10,
+        "start": 1.12
+      },
+      {
+        "text": "in",
+        "at": 35,
+        "length": 2,
+        "start": 1.565
+      },
+      {
+        "text": "their",
+        "at": 38,
+        "length": 5,
+        "start": 1.675
+      },
+      {
+        "text": "expectations",
+        "at": 44,
+        "length": 12,
+        "start": 1.855
+      }
+    ],
+    "duration": 3.625,
+    "speechEnd": 2.884625
+  },
+  {
+    "text": "You should not make an important decision in a hurry.",
+    "file": "reference-24.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "You",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "not",
+        "at": 11,
+        "length": 3,
+        "start": 0.48
+      },
+      {
+        "text": "should",
+        "at": 4,
+        "length": 6,
+        "start": 0.235
+      },
+      {
+        "text": "make",
+        "at": 15,
+        "length": 4,
+        "start": 0.715
+      },
+      {
+        "text": "an",
+        "at": 20,
+        "length": 2,
+        "start": 0.925
+      },
+      {
+        "text": "important",
+        "at": 23,
+        "length": 9,
+        "start": 1.035
+      },
+      {
+        "text": "decision",
+        "at": 33,
+        "length": 8,
+        "start": 1.54
+      },
+      {
+        "text": "in",
+        "at": 42,
+        "length": 2,
+        "start": 1.99
+      },
+      {
+        "text": "hurry",
+        "at": 47,
+        "length": 5,
+        "start": 2.17
+      },
+      {
+        "text": "a",
+        "at": 45,
+        "length": 1,
+        "start": 2.1
+      }
+    ],
+    "duration": 3.315,
+    "speechEnd": 2.577375
+  },
+  {
+    "text": "The museum is open every day except Monday.",
+    "file": "reference-25.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "The",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "museum",
+        "at": 4,
+        "length": 6,
+        "start": 0.175
+      },
+      {
+        "text": "is",
+        "at": 11,
+        "length": 2,
+        "start": 0.655
+      },
+      {
+        "text": "open",
+        "at": 14,
+        "length": 4,
+        "start": 0.83
+      },
+      {
+        "text": "every",
+        "at": 19,
+        "length": 5,
+        "start": 1.115
+      },
+      {
+        "text": "day",
+        "at": 25,
+        "length": 3,
+        "start": 1.375
+      },
+      {
+        "text": "except",
+        "at": 29,
+        "length": 6,
+        "start": 1.57
+      },
+      {
+        "text": "Monday",
+        "at": 36,
+        "length": 6,
+        "start": 1.98
+      }
+    ],
+    "duration": 3.17,
+    "speechEnd": 2.436125
+  },
+  {
+    "text": "Could you explain the situation a little more clearly?",
+    "file": "reference-26.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "Could",
+        "at": 0,
+        "length": 5,
+        "start": 0.1
+      },
+      {
+        "text": "you",
+        "at": 6,
+        "length": 3,
+        "start": 0.285
+      },
+      {
+        "text": "explain",
+        "at": 10,
+        "length": 7,
+        "start": 0.415
+      },
+      {
+        "text": "the",
+        "at": 18,
+        "length": 3,
+        "start": 0.89
+      },
+      {
+        "text": "situation",
+        "at": 22,
+        "length": 9,
+        "start": 0.97
+      },
+      {
+        "text": "a",
+        "at": 32,
+        "length": 1,
+        "start": 1.62
+      },
+      {
+        "text": "little",
+        "at": 34,
+        "length": 6,
+        "start": 1.685
+      },
+      {
+        "text": "more",
+        "at": 41,
+        "length": 4,
+        "start": 1.94
+      },
+      {
+        "text": "clearly",
+        "at": 46,
+        "length": 7,
+        "start": 2.175
+      }
+    ],
+    "duration": 3.455,
+    "speechEnd": 2.717375
+  },
+  {
+    "text": "The new transportation system will connect the two cities.",
+    "file": "reference-27.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "The",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "new",
+        "at": 4,
+        "length": 3,
+        "start": 0.18
+      },
+      {
+        "text": "transportation",
+        "at": 8,
+        "length": 14,
+        "start": 0.39
+      },
+      {
+        "text": "system",
+        "at": 23,
+        "length": 6,
+        "start": 1.3
+      },
+      {
+        "text": "will",
+        "at": 30,
+        "length": 4,
+        "start": 1.715
+      },
+      {
+        "text": "connect",
+        "at": 35,
+        "length": 7,
+        "start": 1.875
+      },
+      {
+        "text": "the",
+        "at": 43,
+        "length": 3,
+        "start": 2.255
+      },
+      {
+        "text": "two",
+        "at": 47,
+        "length": 3,
+        "start": 2.355
+      },
+      {
+        "text": "cities",
+        "at": 51,
+        "length": 6,
+        "start": 2.605
+      }
+    ],
+    "duration": 3.89,
+    "speechEnd": 3.1458125
+  },
+  {
+    "text": "It took considerable patience to solve the complicated problem.",
+    "file": "reference-28.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "It",
+        "at": 0,
+        "length": 2,
+        "start": 0.1
+      },
+      {
+        "text": "took",
+        "at": 3,
+        "length": 4,
+        "start": 0.225
+      },
+      {
+        "text": "considerable",
+        "at": 8,
+        "length": 12,
+        "start": 0.44
+      },
+      {
+        "text": "patience",
+        "at": 21,
+        "length": 8,
+        "start": 1.075
+      },
+      {
+        "text": "to",
+        "at": 30,
+        "length": 2,
+        "start": 1.565
+      },
+      {
+        "text": "solve",
+        "at": 33,
+        "length": 5,
+        "start": 1.675
+      },
+      {
+        "text": "the",
+        "at": 39,
+        "length": 3,
+        "start": 2.045
+      },
+      {
+        "text": "complicated",
+        "at": 43,
+        "length": 11,
+        "start": 2.145
+      },
+      {
+        "text": "problem",
+        "at": 55,
+        "length": 7,
+        "start": 2.85
+      }
+    ],
+    "duration": 4.155,
+    "speechEnd": 3.415
+  },
+  {
+    "text": "First, check the details; then, submit the application.",
+    "file": "reference-29.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "First",
+        "at": 0,
+        "length": 5,
+        "start": 0.1
+      },
+      {
+        "text": "check",
+        "at": 7,
+        "length": 5,
+        "start": 1.0
+      },
+      {
+        "text": "the",
+        "at": 13,
+        "length": 3,
+        "start": 1.28
+      },
+      {
+        "text": "details",
+        "at": 17,
+        "length": 7,
+        "start": 1.385
+      },
+      {
+        "text": "then",
+        "at": 26,
+        "length": 4,
+        "start": 2.385
+      },
+      {
+        "text": "submit",
+        "at": 32,
+        "length": 6,
+        "start": 3.12
+      },
+      {
+        "text": "the",
+        "at": 39,
+        "length": 3,
+        "start": 3.525
+      },
+      {
+        "text": "application",
+        "at": 43,
+        "length": 11,
+        "start": 3.675
+      }
+    ],
+    "duration": 5.22,
+    "speechEnd": 4.480125
+  },
+  {
+    "text": "Dr. Smith has worked for the BBC since 2020.",
+    "file": "reference-30.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "Dr.",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "Smith",
+        "at": 4,
+        "length": 5,
+        "start": 0.455
+      },
+      {
+        "text": "has",
+        "at": 10,
+        "length": 3,
+        "start": 0.8
+      },
+      {
+        "text": "worked",
+        "at": 14,
+        "length": 6,
+        "start": 0.98
+      },
+      {
+        "text": "for",
+        "at": 21,
+        "length": 3,
+        "start": 1.305
+      },
+      {
+        "text": "the",
+        "at": 25,
+        "length": 3,
+        "start": 1.435
+      },
+      {
+        "text": "BBC",
+        "at": 29,
+        "length": 3,
+        "start": 1.515
+      },
+      {
+        "text": "since",
+        "at": 33,
+        "length": 5,
+        "start": 2.065
+      },
+      {
+        "text": "2020",
+        "at": 39,
+        "length": 4,
+        "start": 2.38
+      },
+      {
+        "text": "2020",
+        "at": 39,
+        "length": 4,
+        "start": 2.745
+      }
+    ],
+    "duration": 3.965,
+    "speechEnd": 3.229875
+  },
+  {
+    "text": "The ticket costs $25.50, including a 10 percent service charge.",
+    "file": "reference-31.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "The",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "ticket",
+        "at": 4,
+        "length": 6,
+        "start": 0.2
+      },
+      {
+        "text": "costs",
+        "at": 11,
+        "length": 5,
+        "start": 0.56
+      },
+      {
+        "text": "$25.50",
+        "at": 17,
+        "length": 6,
+        "start": 1.03
+      },
+      {
+        "text": "$25.50",
+        "at": 17,
+        "length": 6,
+        "start": 1.395
+      },
+      {
+        "text": "$25.50",
+        "at": 17,
+        "length": 6,
+        "start": 1.75
+      },
+      {
+        "text": "$25.50",
+        "at": 17,
+        "length": 6,
+        "start": 2.16
+      },
+      {
+        "text": "$25.50",
+        "at": 17,
+        "length": 6,
+        "start": 2.305
+      },
+      {
+        "text": "$25.50",
+        "at": 17,
+        "length": 6,
+        "start": 2.65
+      },
+      {
+        "text": "including",
+        "at": 25,
+        "length": 9,
+        "start": 3.54
+      },
+      {
+        "text": "a",
+        "at": 35,
+        "length": 1,
+        "start": 4.06
+      },
+      {
+        "text": "10 percent",
+        "at": 37,
+        "length": 10,
+        "start": 4.115
+      },
+      {
+        "text": "10 percent",
+        "at": 37,
+        "length": 10,
+        "start": 4.37
+      },
+      {
+        "text": "service",
+        "at": 48,
+        "length": 7,
+        "start": 4.785
+      },
+      {
+        "text": "charge",
+        "at": 56,
+        "length": 6,
+        "start": 5.17
+      }
+    ],
+    "duration": 6.405,
+    "speechEnd": 5.6608125
+  },
+  {
+    "text": "I cannot believe that you have already finished the assignment.",
+    "file": "reference-32.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "I",
+        "at": 0,
+        "length": 1,
+        "start": 0.1
+      },
+      {
+        "text": "cannot",
+        "at": 2,
+        "length": 6,
+        "start": 0.195
+      },
+      {
+        "text": "believe",
+        "at": 9,
+        "length": 7,
+        "start": 0.585
+      },
+      {
+        "text": "that",
+        "at": 17,
+        "length": 4,
+        "start": 0.935
+      },
+      {
+        "text": "have",
+        "at": 26,
+        "length": 4,
+        "start": 1.255
+      },
+      {
+        "text": "you",
+        "at": 22,
+        "length": 3,
+        "start": 1.085
+      },
+      {
+        "text": "already",
+        "at": 31,
+        "length": 7,
+        "start": 1.465
+      },
+      {
+        "text": "finished",
+        "at": 39,
+        "length": 8,
+        "start": 1.89
+      },
+      {
+        "text": "the",
+        "at": 48,
+        "length": 3,
+        "start": 2.32
+      },
+      {
+        "text": "assignment",
+        "at": 52,
+        "length": 10,
+        "start": 2.45
+      }
+    ],
+    "duration": 3.83,
+    "speechEnd": 3.08225
+  },
+  {
+    "text": "They are going to visit the library this afternoon.",
+    "file": "reference-33.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "They",
+        "at": 0,
+        "length": 4,
+        "start": 0.1
+      },
+      {
+        "text": "are",
+        "at": 5,
+        "length": 3,
+        "start": 0.24
+      },
+      {
+        "text": "going",
+        "at": 9,
+        "length": 5,
+        "start": 0.4
+      },
+      {
+        "text": "to",
+        "at": 15,
+        "length": 2,
+        "start": 0.715
+      },
+      {
+        "text": "visit",
+        "at": 18,
+        "length": 5,
+        "start": 0.82
+      },
+      {
+        "text": "library",
+        "at": 28,
+        "length": 7,
+        "start": 1.26
+      },
+      {
+        "text": "the",
+        "at": 24,
+        "length": 3,
+        "start": 1.15
+      },
+      {
+        "text": "this",
+        "at": 36,
+        "length": 4,
+        "start": 1.8
+      },
+      {
+        "text": "afternoon",
+        "at": 41,
+        "length": 9,
+        "start": 2.005
+      }
+    ],
+    "duration": 3.415,
+    "speechEnd": 2.6738125
+  },
+  {
+    "text": "She did not recognize the unfamiliar expression.",
+    "file": "reference-34.wav",
+    "split": "development",
+    "words": [
+      {
+        "text": "She",
+        "at": 0,
+        "length": 3,
+        "start": 0.1
+      },
+      {
+        "text": "did",
+        "at": 4,
+        "length": 3,
+        "start": 0.31
+      },
+      {
+        "text": "not",
+        "at": 8,
+        "length": 3,
+        "start": 0.525
+      },
+      {
+        "text": "recognize",
+        "at": 12,
+        "length": 9,
+        "start": 0.765
+      },
+      {
+        "text": "the",
+        "at": 22,
+        "length": 3,
+        "start": 1.38
+      },
+      {
+        "text": "unfamiliar",
+        "at": 26,
+        "length": 10,
+        "start": 1.53
+      },
+      {
+        "text": "expression",
+        "at": 37,
+        "length": 10,
+        "start": 2.14
+      }
+    ],
+    "duration": 3.54,
+    "speechEnd": 2.7968125
+  },
+  {
+    "text": "We need to find a reasonable solution to this problem.",
+    "file": "reference-35.wav",
+    "split": "holdout",
+    "words": [
+      {
+        "text": "We",
+        "at": 0,
+        "length": 2,
+        "start": 0.1
+      },
+      {
+        "text": "need",
+        "at": 3,
+        "length": 4,
+        "start": 0.22
+      },
+      {
+        "text": "to",
+        "at": 8,
+        "length": 2,
+        "start": 0.42
+      },
+      {
+        "text": "find",
+        "at": 11,
+        "length": 4,
+        "start": 0.505
+      },
+      {
+        "text": "a",
+        "at": 16,
+        "length": 1,
+        "start": 0.865
+      },
+      {
+        "text": "reasonable",
+        "at": 18,
+        "length": 10,
+        "start": 0.965
+      },
+      {
+        "text": "solution",
+        "at": 29,
+        "length": 8,
+        "start": 1.44
+      },
+      {
+        "text": "to",
+        "at": 38,
+        "length": 2,
+        "start": 1.975
+      },
+      {
+        "text": "this",
+        "at": 41,
+        "length": 4,
+        "start": 2.085
+      },
+      {
+        "text": "problem",
+        "at": 46,
+        "length": 7,
+        "start": 2.27
+      }
+    ],
+    "duration": 3.585,
+    "speechEnd": 2.8444375
+  }
+]

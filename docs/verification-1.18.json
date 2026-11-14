@@ -1,0 +1,27 @@
+{
+  "versionName": "1.18-test",
+  "versionCode": 9,
+  "package": "app.jtpractice.offlineplayer",
+  "webSha256": "be1d7adb687173a3e6b0e64c4da4384608fc1163578d6d949500286e0587992d",
+  "certificateSha256": "dd25916910165944fb37b89506d12ca2f5d325164aabe8f2b5c327d2a1f6f5f0",
+  "checks": {
+    "browser": {
+      "passed": 150,
+      "total": 150
+    },
+    "wordCore": {
+      "passed": 28,
+      "total": 28
+    },
+    "onePlusDevice": {
+      "passed": 73,
+      "total": 73
+    }
+  },
+  "scope": {
+    "testAudio": "synthetic WAV",
+    "bluetoothDisconnect": "native receiver path simulated; no physical Bluetooth test",
+    "lockScreen": "short media-clock test, not long-duration endurance",
+    "battery": "not performed; no power-saving conclusion"
+  }
+}

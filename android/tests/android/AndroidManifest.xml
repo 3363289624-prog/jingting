@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="app.jtpractice.instrumentation" android:versionCode="1" android:versionName="1">
+  <application android:label="精听本地验证" android:debuggable="true" android:theme="@android:style/Theme.Material.NoActionBar">
+    <activity android:name="com.jingting.tests.FocusActivity" android:exported="true" />
+  </application>
+  <instrumentation android:name="com.jingting.tests.DeviceTests" android:targetPackage="app.jtpractice.offlineplayer" android:label="精听本地验证" />
+</manifest>
